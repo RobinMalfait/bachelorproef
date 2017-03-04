@@ -17,25 +17,19 @@
 %%
 %% LET OP! Een samenvatting is GEEN voorwoord!
 
-%%---------- Nederlandse samenvatting -----------------------------------------
-%%
-%% TODO: Als je je bachelorproef in het Engels schrijft, moet je eerst een
-%% Nederlandse samenvatting invoegen. Haal daarvoor onderstaande code uit
-%% commentaar.
-%% Wie zijn bachelorproef in het Nederlands schrijft, kan dit negeren en heel
-%% deze sectie verwijderen.
-
-\IfLanguageName{english}{%
-\selectlanguage{dutch}
-\chapter*{Samenvatting}
-\lipsum[1-4]
-\selectlanguage{english}
-}{}
-
 %%---------- Samenvatting -----------------------------------------------------
 %%
 %% De samenvatting in de hoofdtaal van het document
 
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
 
-\lipsum[1-4]
+%% Context: waarom is dit werk belangrijk
+De maatschappij waarin we leven draait om data. Data en informatie zijn zeer veel geld waard, daarom is het belangrijk dat er goed mee om wordt gegaan. In veel systemen waar relationele modellen gebruikt worden gaat er data verloren. Telkens wanneer er een UPDATE of DELETE sql statement wordt uitgevoerd is deze informatie er niet meer. Door middel van EventSourcing gaat er geen data verloren.
+%% - Nood: waarom moest dit onderzocht worden?
+Het is belangrijk om informatie bij te houden, dit kan altijd interessant zijn in de toekomst wanneer er specifieke business vragen komen waar er momenteel nog geen antwoord op is.
+%% - Taak: wat heb je precies gedaan?
+%% - Object: wat staat in dit document geschreven?
+%% - Resultaat: wat was het resultaat?
+%% - Conclusie: wat is/zijn de belangrijkste conclusie(s)?
+%% - Perspectief: blijven er nog vragen open die in de toekomst nog kunnen
+%%    onderzocht worden? Wat is een mogelijk vervolg voor jouw onderzoek?
