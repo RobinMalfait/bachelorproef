@@ -1,3 +1,5 @@
+#!/bin/bash
+
 rm -v ./*.aux > /dev/null 2>&1
 rm -v ./*.log > /dev/null 2>&1
 rm -v ./*.nav > /dev/null 2>&1
