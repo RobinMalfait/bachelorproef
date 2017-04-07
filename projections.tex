@@ -10,3 +10,5 @@ Projections zijn een projectie van de huidige staat die berekend is van alle voo
 Projections hebben een heel groot voordeel dat er meerdere kunnen zijn. Er kan een databank gegenereerd worden voor de business kant die dan allerlei statistieken kan bekijken. Er kan ook een databank gegenereerd worden voor werknemers die met een bepaalde applicatie werken. Er kan zelf een databank of ander opslagsysteem gevuld worden los van de huidige databanken voor de andere partijen. Op deze manier staan we los van de databank.
 
 Deze projecties zijn een berekening van de events, dit wilt ook zeggen dat we niet moeten optimaliseren voor de schrijfkant (zie cqrs). Er kan geoptimaliseerd worden voor de leeskant, er is geen nood om een aantal tabellen elke keer te gaan joinen, als er rechtstreeks naar 1 tabel geschrijven wordt.
+
+Om een wijziging te kunnen doen in een aggregate, moet eerst de huidige state opgebouwd worden vanuit de DomainEvents. Dit kan echter zeer inefficiënt zijn wanneer er duizenden events beschikbaar zijn. Een projectie kan dan perfect dienen als een cache, om dit probleem op te lossen.
