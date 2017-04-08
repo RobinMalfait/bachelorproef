@@ -6,8 +6,9 @@ const glob = require('glob-fs')({gitignore: true});
 const promisify = require('es6-promisify');
 
 // Setup
-const FILES_TO_IGNORE = ['voorwoord.tex', 'structure.tex'];
-const NOT_ALLOWED_WORDS = ['ik', 'je', 'jij', 'we', 'wij', 'jullie', 'onze'];
+const config = require('../package.json').validator;
+const FILES_TO_IGNORE = config.ignore_files;
+const NOT_ALLOWED_WORDS = config.forbidden_words;
 
 // Promisify functions
 const readFile = promisify(fs.readFile);
