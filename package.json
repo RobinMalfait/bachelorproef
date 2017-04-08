@@ -1,0 +1,24 @@
+{
+  "name": "bp",
+  "version": "1.0.0",
+  "description": "Dit LaTeX sjabloon kan je gebruiken voor het opmaken van je bachelorproef toegepaste informatica.",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "cleanup": "./scripts/cleanup.sh",
+    "source": "./scripts/source.sh",
+    "wordcount": "./scripts/wordcount.sh",
+    "validate": "node ./scripts/validate.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobinMalfait/bachelorproef.git"
+  },
+  "keywords": [],
+  "author": "Robin Malfait <malfait.robin@gmail.com>",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "es6-promisify": "^5.0.0",
+    "glob-fs": "^0.1.6",
+    "left-pad": "^1.1.3"
+  }
+}
