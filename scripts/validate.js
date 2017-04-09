@@ -88,7 +88,7 @@ const analyzeWords = (lines, output, markProblem) => {
 
         if (NOT_ALLOWED_WORDS.includes(finalWord)) {
           mark(finalWord);
-          return chalk.yellow(word);
+          return chalk.bgRed.white(word);
         }
 
         if (SKIPPABLE_WORDS.includes(finalWord)) {
@@ -111,7 +111,7 @@ const analyzeWords = (lines, output, markProblem) => {
         if (WARNING_WORDS.includes(finalWord)) {
           mark(finalWord, false);
 
-          return chalk.underline.yellow(word);
+          return chalk.yellow(word);
         }
 
         return word;
