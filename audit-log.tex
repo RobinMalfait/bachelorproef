@@ -5,6 +5,6 @@
 \section{Audit Log}
 \label{sec:audit-log}
 
-Wanneer er gebruik gemaakt wordt van EventSourcing, krijg je door de append-only EventStore gratis een audit log. Deze audit log is een bewijs van alle events die tot een bepaalde waarde (projection) lijden. Wanneer de EventStore op een WORM drive (Write Once Read Many) gezet wordt, dan kan er niet geknoeid worden met deze lijst van events. Het voordeel hieraan is dat er gemakkelijk bewijs kan geleverd worden naar andere partijen indien dat nodig is. Stel er komt een rechtzaak tussen 2 bedrijven omdat er geknoeid is met de data. Dan kan dit zwart op wit bewezen worden dat dit niet het geval is.
+Wanneer er gebruik gemaakt wordt van EventSourcing, is er automatisch een gratis audit log beschikbaar omdat de EventStore append-only is. Deze audit log is een bewijs van alle events die tot een bepaalde waarde (projection) lijden. Wanneer de EventStore op een WORM drive (Write Once Read Many) gezet wordt, dan kan er niet geknoeid worden met deze lijst van events. Het voordeel hieraan is dat er gemakkelijk bewijs kan geleverd worden naar andere partijen indien dat nodig is. Stel er komt een rechtzaak tussen 2 bedrijven omdat er geknoeid is met de data. Dan kan dit zwart op wit bewezen worden dat dit niet het geval is.
 
 Deze audit-log heeft ook nog andere voordelen, als er een fout zit in de applicatie en de applicatie moet gedebugged worden, dan kan men de audit log nemen en deze opnieuw afspelen tot de huidige staat. Zo kan er per event gekeken worden of de uitkomst van de huidige staat al dan niet correct is.

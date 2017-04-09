@@ -7,7 +7,7 @@
 
 CQRS is een term uitgevonden door Greg Young. CQS betekend Command Query Seperation en is een principe die uitgevonden is door Bertrand Meyer (1988). Het is een API design principe dat verteld hoe er met een object of een systeem gecommuniceerd moet worden. CQRS daarintegen is een architectuurstijl die gaat over hoe het aan de binnenkart geïmplementeerd is. Als er gekeken wordt naar CQS is dit al een eerste vorm van goede code schrijven. CQS zorgt er voor dat getters en setters gescheiden zijn. Getters zijn strict bedoeld om een waarde uit de huidige state te halen en deze terug te geven. Setters zijn bedoeld om een wijziging te doen (of een algemene actie uit te voeren), setters geven geen waarde terug maar void. Een goede heuristiek voor het toepassen van CQS is "Een vraag stellen, mag het antwoord niet wijzigen.", met andere woorden, een getter heeft nooit gevolgen op de huidige state of op andere zaken.
 
-Het doel van CQS is vooral de leesbaarheid verhogen, het is een principe die veel developers gebruiken en begrijpen waardoor communicatie makkelijker gaat.
+Het doel van CQS is vooral de leesbaarheid verhogen, het is een principe die developers gebruiken en begrijpen waardoor communicatie makkelijker gaat.
 Een tweede probleem is dat getters en setters in een en dezelfde klasse gedefinieerd zijn, voor eenvoudige klassen is dit geen probleem, maar wanneer er gelezen ogfgeschreven wordt naar een databank is dit wel een probleem.. Er is geen stricte scheiding tussen de lees kant en de schrijf kant.
 
 \codefragment{source/CQS-Appointment.java}{Voorbeeld van CQS}
@@ -20,9 +20,9 @@ Er is nu geen manier om de lees- en schrijfkant los te koppelen van elkaar.
 
 Dit is waar CQRS komt kijken, Command Query Responsibility Segregation. CQRS zorgt er voor dat de lees- en schrijfkant kant strict gescheiden zijn. Het zijn bijna 2 applicaties die naast elkaar staan. Een Command wordt afgehandeld aan de schrijfkant en een Query wordt afgehandeld aan de leeskant. Zowel een Command als een Query zijn messages, dit wordt verder besproken in hoofdstuk~\ref{sec:messages}. De leeskant gaat zijn informatie halen bij de databank (of een andere vorm van opslagmechanisme), dit kan via sql queries, ORM tools, enzovoort. De manier waarop dit gebeurt staat volledig los van hoe de schrijfkant communiceert met het opslagmechanisme. 
 
-Heel veel applicaties, onder andere ook die van Skedify zijn veel intensiever aan de leeskant dan aan de schrijfkant. Vermits de lees- en schrijfkant nu strict gescheiden zijn kan er gebruik gemaakt worden van schalingsmechanismen. Beter nog, de leeskant en schrijfkant kunnen individueel geschaald worden. Er kan zelfs geopteerd worden om lees- en schrijfkant in verschillende programmeertalen te schrijven.
+De meeste applicaties, onder andere ook die van Skedify zijn intensiever aan de leeskant dan aan de schrijfkant. De lees- en schrijfkant zijn nu strict gescheiden en er kan gebruik gemaakt worden van schalingsmechanismen. Beter nog, de leeskant en schrijfkant kunnen individueel geschaald worden. Er kan zelfs geopteerd worden om lees- en schrijfkant in verschillende programmeertalen te schrijven.
 
-Door de zwaardere druk langst de leeskant, kan er moeilijk geoptimaliseerd worden voor alle cases waar zowel de lees- als schrijfkant voordeel uit haalt. De splitsing is dus erg handig.
+Door de zwaardere druk langst de leeskant, kan er moeilijk geoptimaliseerd worden voor alle cases waar zowel de lees- als schrijfkant voordeel uit haalt. De splitsing is daarom een voordeel om langs bijde kanten te optimaliseren.
 
 Wanneer de lees- en schrijfkant niet gescheiden zouden worden, dan maken ze gebruik van de dezelfde databank. Wanneer er gelezen wordt en door een andere partij geschreven wordt, kan dit elkaar hinderen omdat beide kanten dezelfde resources gebruiken.
 
