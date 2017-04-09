@@ -58,7 +58,7 @@ const analyzeSentences = (lines) => {
   }, []);
 };
 
-const analyzeWords = (lines, output, markProblem) => {
+const analyzeWords = (lines, output, markError, markWarning) => {
   const wrongSentences = [];
   let maxLineLength = -Infinity;
   let maxColLength = -Infinity;
@@ -75,7 +75,9 @@ const analyzeWords = (lines, output, markProblem) => {
         hasProblems = true;
 
         if (critical) {
-          markProblem();
+          markError();
+        } else {
+          markWarning();
         }
 
         lastOffset = sentence.toLowerCase().indexOf(finalWord, lastOffset) + 1;
@@ -85,6 +87,12 @@ const analyzeWords = (lines, output, markProblem) => {
       const words = sentence.trim().split(' ');
       const newSentence = words.map((word, wordNumber) => {
         const finalWord = word.toLowerCase().replace(new RegExp(",.!?;", 'g'), '').trim();
+
+        // Mark multiple spaces
+        if (finalWord === "") {
+          markWarning();
+          return chalk.bgRed.white('_');
+        }
 
         if (NOT_ALLOWED_WORDS.includes(finalWord)) {
           mark(finalWord);
@@ -145,7 +153,9 @@ const analyzeWords = (lines, output, markProblem) => {
 const analyze = (file, contents) => {
   let hasProblems = false;
   let output = [];
-  let problems = 0;
+
+  let errors = 0;
+  let warnings = 0;
 
   const analyzers = [
     analyzeLines,
@@ -154,32 +164,38 @@ const analyze = (file, contents) => {
   ];
 
   const addOutput = (...args) => output.push(args.join(' '));
-  const markProblem = () => {
+
+  const markError = () => {
     hasProblems = true;
-    problems += 1;
+    errors += 1;
+  };
+
+  const markWarning = () => {
+    warnings += 1;
   };
 
   return analyzers.reduce((chain, analyzer) => {
     return chain
-      .then((input) => analyzer(input, addOutput, markProblem))
+      .then((input) => analyzer(input, addOutput, markError, markWarning))
       .catch(l); // Log uncaught errors
   }, Promise.resolve(contents))
   .then(() => hasProblems
-    ? Promise.reject({ problems, output })
-    : Promise.resolve({ problems, output })
+    ? Promise.reject({ errors, warnings, output })
+    : Promise.resolve({ errors, warnings, output })
   );
 };
 
-const formatOutput = (title) => ({ output = [], problems }) => {
+const formatOutput = (title) => ({ output = [], errors = 0, warnings = 0 }) => {
   const formattedOutput = output.join('\n');
 
   if (output.length <= 0) {
-    return { output: title, problems };
+    return { output: title, errors, warnings };
   }
 
   return {
     output: `\n${title}\n\n${formattedOutput}\n`,
-    problems,
+    errors,
+    warnings
   };
 }
 
@@ -187,7 +203,8 @@ const formatOutput = (title) => ({ output = [], problems }) => {
 const program = () => {
   let files = glob.readdirSync('**/*.tex').filter(file => !FILES_TO_IGNORE.includes(file));
 
-  let totalProblems = 0;
+  let totalErrors = 0;
+  let totalWarnings = 0;
 
   if (process.argv[2] !== undefined) {
     files = files.filter((file) => `./${file}` === process.argv[2]);
@@ -212,22 +229,34 @@ const program = () => {
         formatOutput(chalk.green(`✔ Checking: ./${file}`)),
         formatOutput(chalk.bold.red(`✗ Checking: ./${file}`))
       )
-      .then(({ problems, output }) => {
+      .then(({ errors, warnings, output }) => {
         l(output);
-        totalProblems += problems;
-        return totalProblems;
+
+        totalErrors += errors;
+        totalWarnings += warnings;
+
+        return {
+          totalErrors,
+          totalWarnings,
+        };
       });
   }, Promise.resolve());
 
   // Finish
-  chain.then((problems) => {
-    const hasProblems = problems > 0;
+  chain.then(({ totalErrors, totalWarnings }) => {
+    const hasErrors = totalErrors > 0;
 
-    const output = problems === 1
-      ? '1 problem occured.' 
-      : `${problems} problems occured.`
+    const errorOutput = totalErrors === 1
+      ? '1 error occured.'
+      : `${totalErrors} errors occured.`
 
-    l(hasProblems
+    const warningOutput = totalWarnings === 1
+      ? '1 warning occured.'
+      : `${totalWarnings} warnings occured.`
+
+    const output = `${errorOutput} ${warningOutput}`;
+
+    l(hasErrors
       ? chalk.bold.red(output)
       : chalk.green(output));
   });
