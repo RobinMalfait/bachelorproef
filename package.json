@@ -26,6 +26,9 @@
       "voorwoord.tex",
       "structure.tex"
     ],
+    "not_allowed_first_words": [
+      "omdat"
+    ],
     "skippable_words": [
       "## TE OVERDREVEN",
       "zeer",

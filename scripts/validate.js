@@ -12,6 +12,7 @@ const NOT_ALLOWED_WORDS = config.forbidden_words;
 const SKIPPABLE_WORDS = config.skippable_words;
 const ALTERNATIVE_WORDS = config.alternatives;
 const WARNING_WORDS = config.warnings;
+const NOT_ALLOWED_FIRST_WORDS = config.not_allowed_first_words;
 
 // Promisify functions
 const readFile = promisify(fs.readFile);
@@ -88,9 +89,14 @@ const analyzeWords = (lines, output, markError, markWarning) => {
       const newSentence = words.map((word, wordNumber) => {
         const finalWord = word.toLowerCase().replace(new RegExp(",.!?;", 'g'), '').trim();
 
+        if (wordNumber === 0 && NOT_ALLOWED_FIRST_WORDS.includes(finalWord)) {
+          mark(finalWord);
+          return chalk.red(word);
+        }
+
         // Mark multiple spaces
         if (finalWord === "") {
-          markWarning();
+          mark(finalWord, false);
           return chalk.bgRed.white('_');
         }
 
