@@ -136,9 +136,8 @@ const analyzeWords = (lines, output, markProblem) => {
   });
 
   if (wrongSentences.length > 0) {
-    output('- The following words are not allowed:\n');
     output(wrongSentences.map(({ line, col, sentence }) => {
-      return `${chalk.bold.grey(`  - (Line: ${leftPad(line, maxLineLength)}, Col: ${leftPad(col, maxColLength)}):`)} ${sentence}`;
+      return `${chalk.bold.grey(` - (Line: ${leftPad(line, maxLineLength)}, Col: ${leftPad(col, maxColLength)}):`)} ${sentence}`;
     }).join('\n'))
   }
 };
