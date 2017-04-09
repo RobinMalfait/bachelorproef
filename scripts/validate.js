@@ -186,9 +186,13 @@ const formatOutput = (title) => ({ output = [], problems }) => {
 
 // Define program
 const program = () => {
-  const files = glob.readdirSync('**/*.tex').filter(file => !FILES_TO_IGNORE.includes(file));
+  let files = glob.readdirSync('**/*.tex').filter(file => !FILES_TO_IGNORE.includes(file));
 
   let totalProblems = 0;
+
+  if (process.argv[2] !== undefined) {
+    files = files.filter((file) => `./${file}` === process.argv[2]);
+  }
 
   const chain = files.reduce((chain, file) => {
     // Ignore some files
