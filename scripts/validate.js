@@ -9,6 +9,9 @@ const promisify = require('es6-promisify');
 const config = require('../package.json').validator;
 const FILES_TO_IGNORE = config.ignore_files;
 const NOT_ALLOWED_WORDS = config.forbidden_words;
+const SKIPPABLE_WORDS = config.skippable_words;
+const ALTERNATIVE_WORDS = config.alternatives;
+const WARNING_WORDS = config.warnings;
 
 // Promisify functions
 const readFile = promisify(fs.readFile);
@@ -67,21 +70,51 @@ const analyzeWords = (lines, output, markProblem) => {
       let lastOffset = 0;
       let wordOccurences = [];
 
+      const mark = (finalWord, critical = true) => {
+        // Mark invalid word
+        hasProblems = true;
+
+        if (critical) {
+          markProblem();
+        }
+
+        lastOffset = sentence.toLowerCase().indexOf(finalWord, lastOffset) + 1;
+        wordOccurences.push(lastOffset);
+      }
+
       const words = sentence.trim().split(' ');
       const newSentence = words.map((word, wordNumber) => {
         const finalWord = word.toLowerCase().replace(new RegExp(",.!?;", 'g'), '').trim();
 
         if (NOT_ALLOWED_WORDS.includes(finalWord)) {
-          // Mark invalid word
-          hasProblems = true;
-          markProblem();
-          lastOffset = sentence.toLowerCase().indexOf(finalWord, lastOffset) + 1;
-          wordOccurences.push(lastOffset);
-
+          mark(finalWord);
           return chalk.yellow(word);
-        } else {
-          return word;
         }
+
+        if (SKIPPABLE_WORDS.includes(finalWord)) {
+          mark(finalWord);
+          return chalk.underline.gray(word);
+        }
+
+        if (Object.keys(ALTERNATIVE_WORDS).includes(finalWord)) {
+          mark(finalWord);
+
+          const alternatives = ALTERNATIVE_WORDS[word];
+          const alternative = alternatives[Math.floor(Math.random() * alternatives.length)];
+
+          return [
+            chalk.red(word),
+            chalk.green(alternative)
+          ].join('->');
+        }
+
+        if (WARNING_WORDS.includes(finalWord)) {
+          mark(finalWord, false);
+
+          return chalk.underline.yellow(word);
+        }
+
+        return word;
       }).join(' ');
       
       if (hasProblems) {
