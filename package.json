@@ -26,8 +26,80 @@
       "voorwoord.tex",
       "structure.tex"
     ],
+    "skippable_words": [
+      "## TE OVERDREVEN",
+      "zeer",
+      "erg",
+      "heel",
+      "onwijs",
+      "liefst",
+
+      "## TE SUBJECTIEF",
+      "natuurlijk",
+      "uiteraard",
+      "mooi",
+      "fantastisch",
+      "geweldig",
+      "waanzinnig",
+      "lelijk",
+      "goed",
+      "verkeerd",
+      "slecht"
+    ],
+    "alternatives": {
+      "dingen": [
+        "voorvallen",
+        "problemen",
+        "zaken",
+        "kwesties"
+      ],
+      "belangrijk": [
+        "van belang",
+        "relevant"
+      ],
+      "makkelijk": [
+        "gemakkelijk",
+        "eenvoudig"
+      ]
+    },
+    "warnings": [
+      "er"
+    ],
     "forbidden_words": [
-      "ik", "je", "jij", "we", "wij", "jullie", "onze"
+      "## NIET DE LEZER AANSPREKEN",
+      "je",
+      "jij",
+      "we",
+      "wij",
+      "jullie",
+      "onze",
+      "u",
+      "uw",
+
+      "## NIET JEZELF AANSPREKEN",
+      "ik",
+      "mij",
+      "mijn",
+
+      "## TE VAAG",
+      "tamelijk",
+      "beetje",
+      "veel",
+      "weinig",
+      "dus",
+      "groot",
+      "gewoon",
+      "bijgevolg",
+
+      "## SPREEKTAAL",
+      "nou",
+      "helemaal",
+      "allemaal",
+
+      "## VEROUDERDE WOORDEN",
+      "doch",
+      "ofschoon",
+      "vermits"
     ]
   }
 }
