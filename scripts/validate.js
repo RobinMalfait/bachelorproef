@@ -22,7 +22,7 @@ const l = console.log;
 const analyzeLines = (contents) => {
   const lines = contents.split('\n').reduce((result, line, index) => {
     // Strip lines which are comments
-    if (line.indexOf('%%') === 0) {
+    if (line.indexOf('%') === 0) {
       return result;
     }
 
