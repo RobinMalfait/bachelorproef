@@ -2,8 +2,8 @@
 %% Voordelen
 %%=============================================================================
 
-\section{Voordelen}
-\label{sec:voordelen}
+\chapter{Voordelen}
+\label{ch:voordelen}
 
 Er zijn verscheidene voordelen verbonden aan EventSourcing. Een voordeel is dat er van technologie gewisselt kan worden voor de projecties. Stel er werd gebruik gemaakt van MySQL om de huidige staat in op te slaan. Wanneer er gemerkt wordt dat er nood is aan een graph database in plaats van een relationele database dan kan er een projectie bijgemaakt worden die simultaan met de mysql database loopt. Zodra de graph database volledig gevoed is met de events uit de EventStore, dan kan de MySQL databank weggegooid worden. Doordat een projectie opgebouwd is in code, en in een versiebeheersysteem zit, moet er niet nagedacht worden om een eventuele back-up te nemen van deze MySQL databank. Indien er later opnieuw van deze databank gebruik gemaakt moet worden, dan kan deze projectie terug ingeladen worden en volledig opnieuw opgebouwd worden.
 Er werd net gesproken over de graph database, stel dat de applicatie al 3 jaar draait en nu komt deze graph database er bij. Zodra de events volledig gevoed zijn in de graph database, dan staat deze op het punt alsof ze al van in begin geprogrammeerd was. Dit is het grote voordeel van al de events bij te houden.
