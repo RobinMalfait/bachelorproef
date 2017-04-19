@@ -1,36 +1,27 @@
-# LaTeX sjabloon voor Bachelorproef toegepaste informatica
+# Bachelorproef
 
-Dit LaTeX sjabloon kan je gebruiken voor het opmaken van je bachelorproef toegepaste informatica.
+> Wanneer is EventSourcing een meerwaarde voor een bedrijf zoals Skedify, waar ze gespecialiseerd zijn in online scheduling?
 
-- De vormgeving is gebaseerd op het "[Legrand Orange Book](http://www.latextemplates.com/template/the-legrand-orange-book)" sjabloon door Mathias Legrand, met aanpassingen specifiek voor HoGent.
-- Het voorblad is conform aan datgene dat door de [scriptie-tool](https://scriptie.hogent.be/) wordt gegenereerd.
-- Het sjabloon is voorzien op tekst in hetzij Nederlands, hetzij Engels
-- Genereren van de bibliografie en referenties gebeurt met Biber en biblatex-apa.
+## Installation
 
-## Aan de slag
+- `git clone git@github.com:RobinMalfait/bachelorproef.git bp-Robin-Malfait`
+- `cd bp-Robin-Malfait`
+- `npm install`
 
-Om het sjabloon zelf te gebruiken, kan je de repository downloaden via de groene knop rechtsboven deze pagina. Steek een LaTeX-document altijd in een versiebeheersysteem!
+## Usage
 
-Stel je LaTeX-editor in om voor de compilatie van het pdf-bestand gebruik te maken van `latexmk` en als tool voor de bibliografie `biber`. Voorbeeld voor [TeXStudio](http://www.texstudio.org/):
+### Build
 
-1. Ga naar Options > Configure TeXStudio
-2. Kies in de overzichtslijst links voor "Build"
-3. Selecteer voor "Default Compiler" in de dropdown list "Latexmk"
-4. Selecteer voor "Default Bibliography Tool" in de dropdown list "Biber"
+- `npm run build`
 
-## Vragen, fouten, verbeteringen
+### Cleanup 
 
-Bugs, vragen voor verbeteringen, enz. zijn welkom! Je kan die registreren via de Issues. Je kan zelf ook verbeteringen aanbrengen via Pull Requests.
+- `npm run cleanup`
 
-## Auteursinformatie
+## Validate text
 
-Bert Van Vreckem <bert.vanvreckem@hogent.be>
+- `npm run validate`
 
-Met bijdragen door
+## Wordcount
 
-- Jeroen Maelbrancke
-- Matts Devriendt
-- Niels Corneille
-- Patrick Van Brussel
-- Simon Rondelez
-
+- `npm run wordcount`
