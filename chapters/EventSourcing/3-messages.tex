@@ -1,0 +1,40 @@
+%%=============================================================================
+%% Messages
+%%=============================================================================
+
+\section{Messages}
+\label{sec:messages}
+
+Communicatie in een applicatie draait rond messages. Er zijn 3 soorten messages die terug komen in een applicatie: informational, interrogatory en imperative. \textcite{Verraes2015Messages}
+Binnen een applicatie met EventSourcing wordt er ook gebruik gemaakt van messages.
+
+
+\subsection{Imperative Messages}
+\label{subsec:imperative-messages}
+
+De imperative of imperatieve messages, zijn messages die de intentie hebben om de ontvanger van dit bericht een actie te laten uitvoeren.
+Binnen EventSourcing zijn is een typisch voorbeeld een Command, waarbij het Command de intentie heeft om een actie uit te voeren. Binnen een systeem zijn deze Commands iets typisch dat uit de business kant komt. Wanneer het volgende voorbeeld door iemand van de business gelezen wordt, weet die ook meteen wat er zal gebeuren, als er gewerkt wordt met deze Command.
+
+\codefragment{source/Messages-ChangeAppointmentStartDate.java}{Een voorbeeld van een Command}
+
+Wanneer er met deze klasse gewerkt wordt (of met objecten van deze klasse), dan wordt er verwacht dat de ontvanger iets zal wijzigen.
+
+\subsection{Interrogatory Messages}
+\label{subsec:interrogatory-messages}
+
+De interrogatory of ondervragende messages, zijn messages die iets vragen over de huidige state van de applicatie. In elke applicatie worden er zaken opgevraagd. Binnen EventSourcing wordt dit ook gedaan aan de hand van Queries, deze Queries gaan informatie opvragen van de huidige state. Deze queries worden ook opgelegd door de business kant, de business kan, wanneer ze het voorbeeld zien, meteen begrijpen wat er zal gebeuren als er met deze Query wordt gewerkt.
+
+\codefragment{source/Messages-MyAppointmentsForToday.java}{Een voorbeeld van een Query}
+
+Bij dit voorbeeld is het duidelijk det er informatie opgevraagd wordt en dat er geen wijzigingen aan de huidige state zullen gebeuren.
+
+\subsection{Informational Messages}
+\label{subsec:informational-messages}
+
+De informational of de informatieve messages, zijn messages die iets over zichzelf willen vertellen. Bij EventSourcing wordt dit uitgedrukt in DomainEvents. DomainEvents zijn de messages die opgeslagen zullen worden in de databank. DomainEvents worden ook meestal in de verleden tijd geschreven omdat ze benadrukken dat er iets gebeurt is.
+
+\codefragment{source/Messages-AppointmentsStartDateHasBeenChanged.java}{Een voorbeeld van een DomainEvent}
+
+Dit voorbeeld lijkt sterk om het voorbeeld van de Command, maar de intentie van beide klassen is totaal verschillend. De klasnamen zijn altijd expliciet, soms zijn ze wat lang maar het is duidelijk wat de bedoeling is. Doordat de messages zo expliciet geschreven zijn, kan er gemakkelijk mee gecommuniceerd worden wat het hele doel is van messages.
+
+Er mag ook geen gemeenschappelijke naam gezocht worden voor deze klassen om 'dubbele code' te verwijderen. Vanaf dit gebeurt komen er problemen naar boven. Wat als er extra informatie in een Command moet maar niet in een DomainEvent of vice versa. De leesbaarheid van de code gaat ook achteruit, de communicatie wordt onduidelijk.

@@ -1,0 +1,91 @@
+---
+  files_to_ignore:
+    - voorwoord.tex
+    - structure.tex
+
+  not_allowed_first_words:
+    - omdat
+
+  skippable_words:
+    ## TE OVERDREVEN
+    - zeer
+    - erg
+    - heel
+    - onwijs
+    - liefst
+    
+    ## TE SUBJECTIEF
+    - natuurlijk
+    - uiteraard
+    - mooi
+    - fantastisch
+    - geweldig
+    - waanzinnig
+    - lelijk
+    - goed
+    - verkeerd
+    - slecht
+
+  alternatives:
+    dingen:
+      - voorvallen
+      - problemen
+      - zaken
+      - kwesties
+
+    belangrijk:
+      - van belang
+      - relevant
+
+    makkelijk:
+      - gemakkelijk
+      - eenvoudig
+
+    opgeslaan:
+      - opgeslagen
+
+  warnings:
+    ## DIT ZAL ZEER VEEL VOORKOMEN (OF TE VEEL)
+    - er
+
+    ## MOGELIJKS PASSIEVE ZIN
+    - word
+    - wordt
+    - worden
+
+  forbidden_words:
+    ## NIET DE LEZER AANSPREKEN
+    - je
+    - jij
+    - we
+    - wij
+    - jullie
+    - onze
+    - u
+    - uw
+
+    ## NIET JEZELF AANSPREKEN
+    - ik
+    - mij
+    - mijn
+    - word
+
+    ## TE VAAG
+    - tamelijk
+    - beetje
+    - veel
+    - weinig
+    - dus
+    - groot
+    - gewoon
+    - bijgevolg
+
+    ## SPREEKTAAL
+    - nou
+    - helemaal
+    - allemaal
+
+    ## VEROUDERDE WOORDEN
+    - doch
+    - ofschoon
+    - vermits

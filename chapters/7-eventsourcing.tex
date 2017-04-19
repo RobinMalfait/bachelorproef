@@ -1,0 +1,14 @@
+%%=============================================================================
+%% EventSourcing
+%%=============================================================================
+
+\chapter{EventSourcing}
+\label{ch:eventsourcing}
+
+EventSourcing is geen nieuwe uitvinding, maar wordt al jaren gebruikt in andere sectoren. Bekende voorbeelden zijn de bankindustrie, wetgeving, en patiënten fisches die opgeslagen zijn bij dokters.
+
+EventSourcing, is zoals de naam al verklapt, dat events de bron zijn van de applicatie. Het is ook zo dat de events de "single source of truth" zijn van de applicatie om andere state uit af te leiden. Een log bestaat ook uit een geschiedenis van events, maar deze wordt niet gebruikt als "single source of truth" op de huidige state af te leiden.
+
+Als er naar de bankindustrie wordt gekeken dan is het bedrag op iemand zijn rekening niet een getal dat opgeslagen is in een databank, of toch niet de enige vorm hier van. Er is een lijst van transacties die tot dit getal komen. Het zal ook wel in een databank opgeslagen zijn, maar dit is den puur een caching mechanisme.
+
+Het is zo dat nu pas, de laatste jaren, EventSourcing opkomt in de informatica sector. In de volgende hoofdstukken zal er dieper ingegaan worden op onderdelen van EventSourcing.

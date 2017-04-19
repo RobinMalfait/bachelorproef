@@ -57,8 +57,8 @@
 
 %---------- Samenvatting, voorwoord -------------------------------------------
 \usechapterimagefalse
-\input{samenvatting}
-\input{voorwoord}
+\input{1-samenvatting}
+\input{2-voorwoord}
 
 %---------- Inhoudstafel ------------------------------------------------------
 \pagestyle{empty} % No headers
@@ -72,32 +72,33 @@
 
 %%---------- Kern -------------------------------------------------------------
 
-\input{inleiding}
-\input{methodologie}
-\input{literatuurstudie}
-\input{proof-of-concept}
+\input{chapters/1-inleiding}
+\input{chapters/2-methodologie}
+\input{chapters/3-literatuurstudie}
+\input{chapters/4-proof-of-concept}
 
 %% Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
 %% vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
 %% elke fase in je onderzoek in een apart hoofdstuk bespreken.
 
-\input{Skedify}
-\input{CQRS}
-\input{eventsourcing}
-  \input{aggregates}
-  \input{value-objects}
-  \input{domain-events}
-  \input{invariants}
-  \input{eventual-consistency}
-  \input{event-store}
-  \input{audit-log}
-  \input{projections}
-\input{schaalbaarheid}
-\input{voordelen}
+\input{chapters/5-Skedify}
+\input{chapters/6-CQRS}
+\input{chapters/7-eventsourcing}
+  \input{chapters/EventSourcing/1-aggregates}
+  \input{chapters/EventSourcing/2-value-objects}
+  \input{chapters/EventSourcing/3-messages}
+  \input{chapters/EventSourcing/4-domain-events}
+  \input{chapters/EventSourcing/5-invariants}
+  \input{chapters/EventSourcing/6-eventual-consistency}
+  \input{chapters/EventSourcing/7-event-store}
+  \input{chapters/EventSourcing/8-audit-log}
+  \input{chapters/EventSourcing/9-projections}
+\input{chapters/8-schaalbaarheid}
+\input{chapters/9-voordelen}
 % Problemen
 % Kosten
 % Wat wijzigen
-\input{conclusie}
+\input{chapters/10-conclusie}
 
 %%---------- Back matter ------------------------------------------------------
 
