@@ -7,111 +7,12 @@
     "cleanup": "./scripts/cleanup.sh",
     "source": "./scripts/source.sh",
     "wordcount": "./scripts/wordcount.sh",
-    "validate": "node ./scripts/validate.js"
+    "validate": "node /Volumes/Data/Tools/bp-analyzer/lib/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RobinMalfait/bachelorproef.git"
   },
   "keywords": [],
-  "author": "Robin Malfait <malfait.robin@gmail.com>",
-  "dependencies": {
-    "chalk": "^1.1.3",
-    "es6-promisify": "^5.0.0",
-    "glob-fs": "^0.1.6",
-    "left-pad": "^1.1.3"
-  },
-  "validator": {
-    "ignore_files": [
-      "voorwoord.tex",
-      "structure.tex"
-    ],
-    "not_allowed_first_words": [
-      "omdat"
-    ],
-    "skippable_words": [
-      "## TE OVERDREVEN",
-      "zeer",
-      "erg",
-      "heel",
-      "onwijs",
-      "liefst",
-
-      "## TE SUBJECTIEF",
-      "natuurlijk",
-      "uiteraard",
-      "mooi",
-      "fantastisch",
-      "geweldig",
-      "waanzinnig",
-      "lelijk",
-      "goed",
-      "verkeerd",
-      "slecht"
-    ],
-    "alternatives": {
-      "dingen": [
-        "voorvallen",
-        "problemen",
-        "zaken",
-        "kwesties"
-      ],
-      "belangrijk": [
-        "van belang",
-        "relevant"
-      ],
-      "makkelijk": [
-        "gemakkelijk",
-        "eenvoudig"
-      ],
-      "opgeslaan": [
-        "opgeslagen"
-      ]
-    },
-    "warnings": [
-      "er",
-
-      "## MOGELIJKS PASSIEVE ZIN",
-      "word",
-      "wordt",
-      "worden"
-    ],
-    "forbidden_words": [
-      "## NIET DE LEZER AANSPREKEN",
-      "je",
-      "jij",
-      "we",
-      "wij",
-      "jullie",
-      "onze",
-      "u",
-      "uw",
-
-      "## NIET JEZELF AANSPREKEN",
-      "ik",
-      "mij",
-      "mijn",
-      "word",
-
-      "## TE VAAG",
-      "tamelijk",
-      "beetje",
-      "veel",
-      "weinig",
-      "dus",
-      "groot",
-      "gewoon",
-      "bijgevolg",
-
-      "## SPREEKTAAL",
-      "nou",
-      "helemaal",
-      "allemaal",
-
-      "## VEROUDERDE WOORDEN",
-      "doch",
-      "ofschoon",
-      "vermits"
-    ]
-  }
+  "author": "Robin Malfait <malfait.robin@gmail.com>"
 }
