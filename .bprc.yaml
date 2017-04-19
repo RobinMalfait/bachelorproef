@@ -1,6 +1,6 @@
 ---
   files_to_ignore:
-    - voorwoord.tex
+    - 2-voorwoord.tex
     - structure.tex
 
   not_allowed_first_words:
