@@ -27,3 +27,5 @@ rm -v ./*.glsdefs > /dev/null 2>&1
 rm -v ./*.ist > /dev/null 2>&1
 rm -v ./*.lof > /dev/null 2>&1
 rm -v ./*.run.xml > /dev/null 2>&1
+rm -v ./*.ps > /dev/null 2>&1
+rm -v ./*.dvi > /dev/null 2>&1
