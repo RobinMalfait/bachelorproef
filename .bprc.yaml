@@ -1,6 +1,6 @@
 ---
   files_to_ignore:
-    - 2-voorwoord.tex
+    - chapters/2-voorwoord.tex
     - structure.tex
 
   not_allowed_first_words:
@@ -32,20 +32,31 @@
       - problemen
       - zaken
       - kwesties
-
     belangrijk:
       - van belang
       - relevant
-
+      - essentieel
+      - noodzakelijk
     makkelijk:
       - gemakkelijk
       - eenvoudig
-
     opgeslaan:
       - opgeslagen
-
     daarintegen:
       - daarentegen
+    hierdoor:
+      - daardoor
+    hiermee:
+      - daarmee
+      - ermee
+    aangezien:
+      - omdat
+      - doordat
+    aanvankelijk:
+      - eerst
+    alhoewel:
+      - hoewel
+      - (ook) al
 
   warnings:
     ## DIT ZAL ZEER VEEL VOORKOMEN (OF TE VEEL)
