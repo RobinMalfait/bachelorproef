@@ -7,4 +7,4 @@
 
 Een systeem dat gebruik maakt van EventSourcing, kan geschaald worden, het schalen is relatief gemakkelijk door volgende redenen.
 De EventStore is een append-only database, er kan altijd een kopie genomen worden van deze database. Er moet niet gekeken worden of er al dan niet wijzigingen zijn in de data en welke de correcte data is. Synchroniseren van meerdere EventStores is een kwestie van onbrekende rijen aan te vullen. Hiervoor kan er een mechanisme gebruikt worden zoals "geef alle events na id X".
-Schalen van de applicatie zelf kan als volgt gebeuren. Er kunnen projecties bijgemaakt worden die zichzelf gaan 'voeden' met alle events uit de EventStore. Van zodra ze up-to-date zijn met de EventStore kunnen ze als projection listener geregistreerd worden, om live naar de events te luisteren.
+Schalen van de applicatie zelf kan als volgt gebeuren: er kunnen projecties bijgemaakt worden die zichzelf gaan 'voeden' met alle events uit de EventStore. Van zodra ze up-to-date zijn met de EventStore kunnen ze als projection listener geregistreerd worden, om live naar de events te luisteren.
