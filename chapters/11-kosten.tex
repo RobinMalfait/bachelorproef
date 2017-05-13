@@ -40,16 +40,28 @@ Requests / maand & Event grootte & Periode & Nodige disk capaciteit \\ \midrule
 
 \footnotetext{De gegevens staan voor de herkenbaarheid met het kilobyte en gigabyte symbool, maar eigenlijk wordt er kibibyte en gibibyte bedoelt.}
 
-Zoals te zien in tabel \ref{disk-capaciteit} is het helemaal geen probleem om de events op te slaan omdat deze helemaal niet zo groot zijn. De kost is 1 harde schijf extra, die elk jaar goedkoper en goedkoper wordt.
+Zoals te zien in tabel \ref{disk-capaciteit} is het helemaal geen probleem om de events op te slaan omdat deze helemaal niet zo groot zijn. De kost is 1 harde schijf extra, die elk jaar goedkoper en goedkoper wordt. Meer nog, zolang de data hoeveelheid onder Kryder\'s law blijft, wordt de data alleen maar goedkoper over tijd.
+
+\begin{figure}[h]
+\caption{Kryder slowdown. Chart by Preeti Gupta at UCSC.}
+\centering
+\includegraphics[width=0.75\textwidth]{img/kryder-slowdown}
+\end{figure}
 
 Een tweede kost waar er rekening mee moet worden gehouden zijn backups. Zoals vermeld in Hoofdstuk~\ref{sec:projections} zijn de databanken die gebruikt worden projecties van de afgebeelde events. Vermits deze een bereking zijn volstaat het om enkel van de events een backup te nemen, omdat de projecties opnieuw berekend kunnen worden\footnote{Er mag niet vergeten worden om een backup te nemen van data die niet in de databank wordt opgeslagen zoals afbeeldingen}.
 
 \subsection{Developer kosten}
 \label{subsec:developer-kosten}
 
-Het is een andere manier van werken dus moeten de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com.
+Het is een andere manier van werken dus moeten de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com. Zowel bij Skedify, als bij andere bedrijven wordt er gebruik gemaakt van OOP (Object oriented programming). EventSourcing gaat erg goed samen met functioneel programming omdat de huidige state een left fold is van vorige events.
+
+\begin{equation}
+\text{current state} = f(\text{events}, \text{action})
+\end{equation}
+
+Functioneel leren programmeren is dus een meerwaarde.
 
 \subsection{Performance kosten}
 \label{subsec:performance-kosten}
 
-Telkens wanneer er een nieuwe command uitgevoerd wordt zoals vernoemd in Hoofdstuk~\ref{subsec:imperative-messages}, moeten alle events uit de eventstore overlopen worden om de huidige staat van het object op te bouwen. Dit wil zeggen dat bij elk nieuw event de applicatie trager zal worden. In kleine en middelmatige applicaties heeft dit geen gevolgen, naar grotere applicaties heeft dit grotere gevolgen. Hiervoor is een oplossing van snapshots. Een snapshot is de huidige state van een object na het overlopen van x aantal events. Deze kunnen in de EventStore opgeslagen worden, in een tabel naast de events zelf. Telkens wanneer de klasse beschrijving zou veranderen, moeten de snapshots opnieuw gegenereerd worden.
+Telkens wanneer er een nieuwe command uitgevoerd wordt zoals vernoemd in Hoofdstuk~\ref{subsec:imperative-messages}, moeten alle events uit de eventstore overlopen worden om de huidige staat van het object op te bouwen. Dit wil zeggen dat bij elk nieuw event de applicatie trager zal worden. In kleine en middelmatige applicaties heeft dit geen gevolgen, naar grotere applicaties heeft dit grotere gevolgen. Hiervoor is een oplossing van snapshots. Een snapshot is de huidige state van een object na het overlopen van x aantal events. Deze kunnen in de EventStore opgeslagen worden, in een tabel naast de events zelf. Telkens wanneer de klasse beschrijving zou veranderen, moeten de snapshots opnieuw gegenereerd worden. Een tweede optie is om de current state ook op te slagen in memory, via deze weg moeten er geen events opnieuw afgespeeld worden om de huidige state van een object te kunnen bepalen omdat deze reeds beschikbaar is.
