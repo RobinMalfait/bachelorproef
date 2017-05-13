@@ -62,12 +62,12 @@
 
   warnings:
     ## DIT ZAL ZEER VEEL VOORKOMEN (OF TE VEEL)
-    - er
+    # - er
 
     ## MOGELIJKS PASSIEVE ZIN
-    - word
-    - wordt
-    - worden
+    # - word
+    # - wordt
+    # - worden
 
   forbidden_words:
     ## NIET DE LEZER AANSPREKEN
