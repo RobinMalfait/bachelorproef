@@ -5,4 +5,18 @@
 \chapter{Kosten}
 \label{ch:kosten}
 
-...TODO...
+De kosten van EventSourcing kunnen opgedeeld worden in 3 grote delen. Het eerste deel gaat over de fysieke infrastructuur kosten die EventSourcing met zich meebrengt. Het opslaan van alle belangrijke business data doorheen de jaren dat de applicatie werkt brengt een bepaalde kost met zich mee. Het tweede deel gaat over de kosten van de developers, EventSourcing is een andere manier om met gegevens om te gaan en dus ook een andere manier om code te schrijven. Tot slot het derde deel gaat over de kost van performance vermits elk event overlopen moet worden kan dit een performance probleem met zich mee brengen.
+
+\subsection{Infrastructurele kosten}
+\label{subsec:infrastructurele-kosten}
+
+Er van uitgaande dat events opgeslagen worden als json objecten kan hier vrij snel een berekening op gedaan worden.
+
+
+
+- Payloads van requests (als data)
+- Aantal requests (log)
+- Periode
+
+\subsection{Developer kosten}
+\label{subsec:developer-kosten}

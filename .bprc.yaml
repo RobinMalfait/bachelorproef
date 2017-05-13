@@ -57,6 +57,8 @@
     alhoewel:
       - hoewel
       - (ook) al
+    strict:
+      - strikt
 
   warnings:
     ## DIT ZAL ZEER VEEL VOORKOMEN (OF TE VEEL)

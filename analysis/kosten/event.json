@@ -1,0 +1,36 @@
+{
+    "_index": "logstash-2017.05.12",
+    "_type": "journal",
+    "_id": "AVv9m-dJoMD6kkgrEvOt",
+    "_score": null,
+    "_source": {
+        "skedify_environment": "staging",
+        "level": 400,
+        "channel": "playground",
+        "pid": 9092,
+        "type": "journal",
+        "tags": [
+            "beats_input_codec_plain_applied"
+        ],
+        "hostname": "dev-module01.ams03.sl.skedify.io",
+        "unit": "sk_api_primary_playground_api_primary_9200.service",
+        "datetime": {
+            "date": "2017-05-12 17:01:44.626996",
+            "timezone": "UTC",
+            "timezone_type": 3
+        },
+        "@timestamp": "2017-05-12T17:01:44.627Z",
+        "level_name": "ERROR",
+        "extra": [],
+        "@version": "1",
+        "context": []
+    },
+    "fields": {
+        "@timestamp": [
+            1494608504627
+        ]
+    },
+    "sort": [
+        1494608504627
+    ]
+}

@@ -6,7 +6,7 @@
     "build": "./scripts/build.sh",
     "cleanup": "./scripts/cleanup.sh",
     "wordcount": "./scripts/wordcount.sh",
-    "validate": "node /Volumes/Data/Tools/bp-analyzer/lib/index.js"
+    "validate": "/Volumes/Data/Tools/bp-analyzer/build/analyzer-macos validate"
   },
   "repository": {
     "type": "git",

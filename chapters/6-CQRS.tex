@@ -20,9 +20,30 @@ Er is nu geen manier om de lees- en schrijfkant los te koppelen van elkaar.
 
 Dit is waar CQRS komt kijken, Command Query Responsibility Segregation. CQRS zorgt er voor dat de lees- en schrijfkant kant strict gescheiden zijn. Het zijn bijna 2 applicaties die naast elkaar staan. Een Command wordt afgehandeld aan de schrijfkant en een Query wordt afgehandeld aan de leeskant. Zowel een Command als een Query zijn messages, dit wordt verder besproken in hoofdstuk~\ref{sec:messages}. De leeskant gaat zijn informatie halen bij de databank (of een andere vorm van opslagmechanisme), dit kan via sql queries, ORM tools, enzovoort. De manier waarop dit gebeurt staat volledig los van hoe de schrijfkant communiceert met het opslagmechanisme. 
 
-De meeste applicaties, onder andere ook die van Skedify zijn intensiever aan de leeskant dan aan de schrijfkant. De lees- en schrijfkant zijn nu strict gescheiden en er kan gebruik gemaakt worden van schalingsmechanismen. Beter nog, de leeskant en schrijfkant kunnen individueel geschaald worden. Er kan zelfs geopteerd worden om lees- en schrijfkant in verschillende programmeertalen te schrijven.
+De meeste applicaties, onder andere ook die van Skedify zijn intensiever aan de leeskant dan aan de schrijfkant (Tabel \ref{cqrs-read-writes}). De lees- en schrijfkant zijn nu strict gescheiden en er kan gebruik gemaakt worden van schalingsmechanismen. Beter nog, de leeskant en schrijfkant kunnen individueel geschaald worden. Er kan zelfs geopteerd worden om lees- en schrijfkant in verschillende programmeertalen te schrijven.
 
-Door de zwaardere druk langst de leeskant, kan er moeilijk geoptimaliseerd worden voor alle cases waar zowel de lees- als schrijfkant voordeel uit haalt. De splitsing is daarom een voordeel om langs bijde kanten te optimaliseren.
+\begin{table}[h]
+\centering
+\caption{Aantal requests vergeleken voor de lees- en schrijfkant. Er zijn ~5.548 (\textasciitilde18.02\%) keer zoveel lees requests dan schrijf requests.}
+\begin{tabular}{lll} \toprule
+Methode & \# Requests & Type        \\ \midrule
+GET     & 612 000     & LEZEN       \\
+OPTIONS & 148 000     & LEZEN       \\
+POST    & 129 000     & SCHRIJVEN   \\
+HEAD    & 362 000     & LEZEN       \\
+PATCH   & 13 400      & SCHRIJVEN   \\
+DELETE  & 1 100       & SCHRIJVEN   \\ \bottomrule
+\end{tabular}
+\label{cqrs-read-writes}
+\end{table}
+
+\begin{figure}[h]
+\caption{Visuele representatie van tabel ~\ref{cqrs-read-writes}}
+\centering
+\includegraphics[width=0.75\textwidth]{img/lees-en-schrijfkant}
+\end{figure}
+
+Door de zwaardere druk langst de leeskant, kan er moeilijk geoptimaliseerd worden voor alle cases waar zowel de lees- als schrijfkant voordeel uit haalt. De splitsing is daarom een voordeel om langs bijde kanten te kunnen optimaliseren.
 
 Wanneer de lees- en schrijfkant niet gescheiden zouden worden, dan maken ze gebruik van de dezelfde databank. Wanneer er gelezen wordt en door een andere partij geschreven wordt, kan dit elkaar hinderen omdat beide kanten dezelfde resources gebruiken.
 

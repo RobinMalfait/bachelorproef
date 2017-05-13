@@ -24,7 +24,7 @@
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
 
 %% Context: waarom is dit werk belangrijk
-Deze maatschappij draait om data. Data en informatie zijn geld waard, daarom is het van belang dat er voorzichtig mee om wordt gegaan. In systemen waar relationele modellen gebruikt worden gaat er data verloren. Telkens wanneer er een update of delete sql statement wordt uitgevoerd is deze informatie er niet meer. Door gebruik te maken van EventSourcing gaat er geen data verloren.
+De maatschappij draait om data. Data en informatie zijn geld waard, daarom is het van belang dat er voorzichtig mee om wordt gegaan zodat er geen gegevens verloren gaan. In systemen waar relationele modellen gebruikt worden gaat er data verloren wanneer er niet genoeg nagedacht wordt. Bij elke wijziging of verwijdering van een rij, is de voorgaande informatie die beschikking was verloren gegaan. Dit kan echter opgelost worden door logs te gebruiken, maar vermits deze niet de single-source-of-truth is, en er geen huidige staat van berekend wordt is de kans groter dat deze fouten bevat of onbruikbaar is om de oude gegevens te achterhalen. Door gebruik te maken van EventSourcing gaat er geen data verloren.
 %% - Nood: waarom moest dit onderzocht worden?
 Het is van belang om informatie bij te houden, dit kan altijd interessant zijn in de toekomst wanneer er specifieke business vragen komen waar er momenteel nog geen antwoord op is.
 %% - Taak: wat heb je precies gedaan?
