@@ -18,7 +18,7 @@ In dit voorbeeld zijn getters en setters strikt gescheiden. Het opvragen van een
 
 Er is nu geen manier om de lees- en schrijfkant los te koppelen van elkaar. De Appointment klasse zal zowel voor het persisteren van data met deze databank verbinden als voor het uitlezen van gegevens. Er is momenteel geen manier om te bepalen dat het lezen van data via een andere database connectie moet gaan. Het lezen en schrijven, is gekoppeld aan deze klasse waardoor er geen scheiding mogelijk is.
 
-Dit is waar CQRS komt kijken, Command Query Responsibility Segregation. CQRS zorgt er voor dat de lees- en schrijfkant kant strikt gescheiden zijn. Het zijn bijna 2 applicaties die naast elkaar staan. Een Command wordt afgehandeld aan de schrijfkant en een Query wordt afgehandeld aan de leeskant. Zowel een Command als een Query zijn messages, dit wordt verder besproken in hoofdstuk~\ref{sec:messages}. De leeskant gaat zijn informatie halen bij de databank (of een andere vorm van opslagmechanisme), dit kan via sql queries, ORM tools, enzovoort. De manier waarop dit gebeurt staat volledig los van hoe de schrijfkant communiceert met het opslagmechanisme. 
+Dit is waar \gls{CQRS} komt kijken, Command Query Responsibility Segregation. \gls{CQRS} zorgt er voor dat de lees- en schrijfkant kant strikt gescheiden zijn. Het zijn bijna 2 applicaties die naast elkaar staan. Een Command wordt afgehandeld aan de schrijfkant en een Query wordt afgehandeld aan de leeskant. Zowel een Command als een Query zijn messages, dit wordt verder besproken in hoofdstuk~\ref{sec:messages}. De leeskant gaat zijn informatie halen bij de databank (of een andere vorm van opslagmechanisme), dit kan via sql queries, ORM tools, enzovoort. De manier waarop dit gebeurt staat volledig los van hoe de schrijfkant communiceert met het opslagmechanisme.
 
 De meeste applicaties, onder andere ook die van Skedify zijn intensiever aan de leeskant dan aan de schrijfkant (Tabel \ref{cqrs-read-writes}). De lees- en schrijfkant zijn nu strikt gescheiden en er kan gebruik gemaakt worden van schalingsmechanismen. Beter nog, de leeskant en schrijfkant kunnen individueel geschaald worden. Er kan zelfs geopteerd worden om lees- en schrijfkant in verschillende programmeertalen te schrijven.
 
@@ -47,4 +47,4 @@ Door de zwaardere druk langst de leeskant, kan er moeilijk geoptimaliseerd worde
 
 Wanneer de lees- en schrijfkant niet gescheiden zouden worden, dan maken ze gebruik van de dezelfde databank. Wanneer er gelezen wordt en door een andere partij geschreven wordt, kan dit elkaar hinderen omdat beide kanten dezelfde resources gebruiken.
 
-CQRS speelt en grote rol bij EventSourcing, vandaar dit korte hoofdstuk.
+\gls{CQRS} speelt en grote rol bij EventSourcing, vandaar dit korte hoofdstuk.
