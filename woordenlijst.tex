@@ -1,0 +1,23 @@
+%---------- Lijst afkortingen, termen -----------------------------------------
+
+%-------------------------------- acroniemen
+\newacronym{RDBMS}{RDBMS}{relational database management system}
+\newacronym{SQL}{SQL}{Structured Query Language}
+\newacronym{GUID}{GUID}{Globally Unique Identifier}
+\newacronym{WORM}{WORM}{Write Once Read Many}
+\newacronym{CQS}{CQS}{Command Query Separation}
+\newacronym{CQRS}{CQRS}{Command Query Responsibility Segregation}
+
+%--------------------------------- woordenlijst
+\newglossaryentry{mysql}{
+  name = MySQL,
+  text = MySQL,
+  description = {MySQL is een managementsysteem voor relationele databases (\gls{RDBMS}). SQL is de taal die wordt gebruikt om een database van dit systeem op te bouwen, te bevragen en te onderhouden.}
+}
+
+%--------------------------------- Print me
+
+\printglossary[type=\acronymtype,title={Lijst van acroniemen}]
+\addcontentsline{toc}{chapter}{\textcolor{maincolor}{Lijst van acroniemen}}
+\printglossary
+\addcontentsline{toc}{chapter}{\textcolor{maincolor}{Verklarende woordenlijst}}

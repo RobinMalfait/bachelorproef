@@ -2,6 +2,7 @@
 
 rm -rf `biber --cache`
 
+makeglosseries bachproef-tin
 pdflatex bachproef-tin.tex
 biber bachproef-tin
 pdflatex bachproef-tin.tex

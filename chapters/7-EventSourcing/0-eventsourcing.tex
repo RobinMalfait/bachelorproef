@@ -5,7 +5,7 @@
 \chapter{EventSourcing}
 \label{ch:eventsourcing}
 
-EventSourcing is geen nieuwe uitvinding, maar wordt al jaren gebruikt in andere sectoren. Bekende voorbeelden zijn de bankindustrie, wetgeving, en patiënten fisches die opgeslagen zijn bij dokters.
+EventSourcing is geen nieuwe uitvinding, maar wordt al jaren gebruikt in andere sectoren. Bekende voorbeelden zijn de bankindustrie, wetgeving, en patiënten fisches die opgeslagen zijn bij dokters. Onze wetgeving is gebasseerd op de grondwet, elke nieuwe wet is een addendum op deze basis wetgeving (\cite{belgischewetgeving}). 
 
 EventSourcing, is zoals de naam al verklapt, dat events de bron zijn van de applicatie. Het is ook zo dat de events de \"single source of truth\" zijn van de applicatie om andere state uit af te leiden. Een log bestaat ook uit een geschiedenis van events, maar deze wordt niet gebruikt als \"single source of truth\" op de huidige state af te leiden.
 
@@ -13,6 +13,6 @@ EventSourcing wordt door Microsoft aanzien als een patroon. Microsoft heeft onde
 
 Zoals eerder vermeld, is EventSourcing niet nieuw voor sectoren zoals de bankindustrie, daarom zijn veel voorbeelden te vinden over bank transactions en e-commerce, zoals te vinden is bij \textcite{Microsoft2017ES} als voorbeeld. In deze bachelorproef wordt er naar Skedify gekeken, wat niets te maken heeft met de standaard voorbeelden die te vinden zijn.
 
-Als er naar de bankindustrie wordt gekeken dan is het bedrag op iemand zijn rekening niet een getal dat opgeslagen is in een databank, of toch niet de enige vorm hier van. Er is een lijst van transacties die tot dit getal komen. Het zal ook wel in een databank opgeslagen zijn, maar dit is den puur een caching mechanisme.
+Als er naar de bankindustrie wordt gekeken dan is het bedrag op iemand zijn rekening niet een getal dat enkel en alleen opgeslagen is in een databank. Er is een lijst van transacties die tot dit getal komen. Het getal op je zichtrekening zit ook opgeslagen in een  databank, maar dit is puur als caching mechanisme, zodat men niet elke keer opnieuw alle transacties moet afgaan om dit getal te bepalen.
 
 Het is zo dat nu pas, de laatste jaren, EventSourcing opkomt in de informatica sector. In de volgende hoofdstukken zal er dieper ingegaan worden op onderdelen van EventSourcing.

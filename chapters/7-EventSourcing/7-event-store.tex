@@ -5,11 +5,11 @@
 \section{Event Store}
 \label{sec:event-store}
 
-De EventStore is een relevant concept bij EventSourcing. De EventStore is de plaats waar alle DomainEvents opgeslagen zullen worden. De EventStore kan elk soort databank zijn, er is ook een speciaal gemaakt en is te vinden op https://geteventstore.com. Voor deze bachelorproef, en de proof-of-concept zal er gebruik gemaakt worden van een simpele EventStore in mysql. Een EventStore is helemaal niet zo moeilijk qua structuur, het bevat volgende minimale velden:
+De EventStore is een relevant concept bij EventSourcing. De EventStore is de plaats waar alle DomainEvents opgeslagen zullen worden. De EventStore kan elk soort databank zijn, er is ook een speciaal gemaakt en is te vinden op https://geteventstore.com. Voor deze bachelorproef, en de proof-of-concept zal er gebruik gemaakt worden van een simpele EventStore in \gls{mysql}. Een EventStore is helemaal niet zo moeilijk qua structuur, het bevat volgende minimale velden:
 
 \begin{itemize}
   \item{id, een simpele id, die autoincrementeel kan zijn}
-  \item{stream_id, een id die bij een Aggregate hoort, dit is een GUID. Alle events die horen tot een bepaalde aggregate zullen dezelfde stream_id hebben.}
+  \item{stream_id, een id die bij een Aggregate hoort, dit is een \gls{GUID}. Alle events die horen tot een bepaalde aggregate zullen dezelfde stream_id hebben.}
   \item{stream_version, een versie die incrementeel is per aggregaat. Dit zorgt er voor dat event in de juiste volgorde kunnen worden afgespeeld indien nodig.}
   \item{event_name, de naam van het DomainEvent dat opgeslagen moet worden. Via deze naam kan het juiste object weer opgebouwd worden in de code.}
   \item{payload, dit bevat de effectieve data van het DomainEvent. Dit kan een json object zijn. Dit wordt mee gebruikt, naast de naam om het object weer op te bouwen.}
