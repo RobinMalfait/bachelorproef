@@ -2,15 +2,16 @@
 
 %-------------------------------- acroniemen
 \newacronym[longplural={Relational Database Management System\'s}]{RDBMS}{RDBMS}{Relational Database Management System}
-\newacronym{SQL}{SQL}{Structured Query Language}
-\newacronym{GUID}{GUID}{Globally Unique Identifier}
-\newacronym{WORM}{WORM}{Write Once Read Many}
-\newacronym{ORM}{ORM}{Object Relational Mapper}
-\newacronym{CQS}{CQS}{Command Query Separation}
 \newacronym{CQRS}{CQRS}{Command Query Responsibility Segregation}
-\newacronym{DDD}{DDD}{Domain Driven Design/Development}
+\newacronym{CQS}{CQS}{Command Query Separation}
 \newacronym{CRUD}{CRUD}{Create Read Update Delete}
+\newacronym{DDD}{DDD}{Domain Driven Design/Development}
+\newacronym{GUID}{GUID}{Globally Unique Identifier}
+\newacronym{JSON}{JSON}{JavaScript Object Notation}
 \newacronym{OOP}{OOP}{Object Oriented Programming}
+\newacronym{ORM}{ORM}{Object Relational Mapper}
+\newacronym{SQL}{SQL}{Structured Query Language}
+\newacronym{WORM}{WORM}{Write Once Read Many}
 
 %--------------------------------- woordenlijst
 
@@ -22,86 +23,80 @@
 
 \newglossaryentry{graph}
 {
-  name = graph,
-  description = {...}
+  name = {Graph database},
+  description = {Een database waarbij er grafen structuren worden gebruikt om gegevens op te slaan in plaats van rijen en kolommen, ze maken gebruik van nodes en edges}
 }
 
 \newglossaryentry{meetup}
 {
-  name = meetup,
-  description = {mini conferenties waar 2 à 3-tal mensen een presentatie gegeven omtrent een bepaald onderwerp en waar je aan netwerking kan doen}
+  name = Meetup,
+  description = {Mini conferenties waar 2 à 3-tal mensen een presentatie gegeven omtrent een bepaald onderwerp}
 }
 
 \newglossaryentry{log}
 {
-  name = log,
+  name = Log,
   description = {Een log file is een verzameling of een opname van evenementen die gebeurd zijn in een systeem}
 }
 
 \newglossaryentry{getter}
 {
-  name = getter,
+  name = Getter,
   description = {Een getter is een methode die informatie uit een object ophaalt, zonder dit object te muteren}
 }
 
 \newglossaryentry{setter}
 {
-  name = setter,
+  name = Setter,
   description = {Een setter is een methode die geen informatie uit een object ophaalt, maar het object muteert}
 }
 
 \newglossaryentry{void}
 {
-  name = void,
+  name = Void,
   description = {Een type dat ``niets'' betekent}
 }
 
 \newglossaryentry{caching}
 {
-  name = caching,
+  name = Caching,
   description = {Caching is het principe van het resultaat van berekingen op te slaan, zodat de bereking niet opnieuw gedaan moet worden}
 }
 
 \newglossaryentry{cache}
 {
-  name = cache,
+  name = Cache,
   description = {Caching is het principe van het resultaat van berekingen op te slaan, zodat de bereking niet opnieuw gedaan moet worden}
 }
 
 \newglossaryentry{command}
 {
-  name = command,
-  description = {...}
+  name = Command,
+  description = {Een message die de intentie heeft een actie te laten uitvoeren, ``doe dit'', ``doe dat''}
 }
 
 \newglossaryentry{commandhandler}
 {
-  name = commandhandler,
-  description = {...}
+  name = {Command Handler},
+  description = {Een object die de taak van beschreven in een command, zal uitvoeren}
 }
 
 \newglossaryentry{query}
 {
-  name = query,
-  description = {...}
-}
-
-\newglossaryentry{json}
-{
-  name = json,
-  description = {...}
+  name = Query,
+  description = {Een message die de intentie heeft informatie op te vragen uit het systeem}
 }
 
 \newglossaryentry{payload}
 {
-  name = payload,
-  description = {...}
+  name = Payload,
+  description = {Een geheel aan informatie bedoeld getransporteerd te worden}
 }
 
-\newglossaryentry{left fold}
+\newglossaryentry{leftfold}
 {
-  name = left fold,
-  description = {...}
+  name = {Left Fold},
+  description = {Een left fold is een functie die een lijst door middel van een andere functie reduceert tot 1 uitkomst}
 }
 
 %--------------------------------- Print me

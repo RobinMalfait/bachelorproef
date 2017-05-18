@@ -10,8 +10,8 @@ De kosten van EventSourcing kunnen opgedeeld worden in 3 grote delen. Het eerste
 \subsection{Infrastructurele kosten}
 \label{subsec:infrastructurele-kosten}
 
-Er van uitgaande dat events opgeslagen worden als \gls{json} objecten kan hier vrij snel een berekening op gedaan worden. Hier zijn volgende zaken waar er rekening mee gehouden moet worden: grootte van het \gls{json} object en het aantal requests.
-De grootte van een \gls{json} object voor een bepaald event is niet zo groot. Om dit te weten te komen, wordt de grootte van de \gls{payload} om een nieuwe afspraak te maken genomen en als \gls{json} object opgeslagen. Nu we dit event hebben opgeslagen, kan de grootte in bytes uitgelezen worden. De keuze om de payload van een nieuwe appointment te gebruiken is omdat deze het meest voorkomt in de applicatie van Skedify. De grootte van dit event bedraagt 168 bytes.
+Er van uitgaande dat events opgeslagen worden als \gls{JSON} objecten kan hier vrij snel een berekening op gedaan worden. Hier zijn volgende zaken waar er rekening mee gehouden moet worden: grootte van het \gls{JSON} object en het aantal requests.
+De grootte van een \gls{JSON} object voor een bepaald event is niet zo groot. Om dit te weten te komen, wordt de grootte van de \gls{payload} om een nieuwe afspraak te maken genomen en als \gls{JSON} object opgeslagen. Nu we dit event hebben opgeslagen, kan de grootte in bytes uitgelezen worden. De keuze om de payload van een nieuwe appointment te gebruiken is omdat deze het meest voorkomt in de applicatie van Skedify. De grootte van dit event bedraagt 168 bytes.
 Uit informatie van New Relic, een platform dat door Skedify gebruikt wordt om aan monitoring te doen, blijkt dat er in 1 maand tijd 143500 requests worden uitgevoerd die een schrijfactie uitvoeren.
 Met deze gegevens kan er berekend worden hoeveel disk capaciteit er nodig is om deze events voor lange tijd bij te houden.
 
@@ -53,7 +53,7 @@ Een tweede kost waar er rekening mee moet worden gehouden zijn backups. Zoals ve
 \subsection{Developer kosten}
 \label{subsec:developer-kosten}
 
-Het is een andere manier van werken dus zullen de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com. Zowel bij Skedify, als bij andere bedrijven wordt er gebruik gemaakt van \gls{OOP}. EventSourcing gaat erg goed samen met functional programming omdat de huidige state een \gls{left fold} is van vorige events.
+Het is een andere manier van werken dus zullen de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com. Zowel bij Skedify, als bij andere bedrijven wordt er gebruik gemaakt van \gls{OOP}. EventSourcing gaat erg goed samen met functional programming omdat de huidige state een \gls{leftfold} is van vorige events.
 
 \begin{equation}
 \text{current state} = f(\text{events}, \text{action})

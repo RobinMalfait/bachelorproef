@@ -2,12 +2,17 @@
 
 rm -rf `biber --cache`
 
-pdflatex bachproef-tin
-makeglosseries bachproef-tin
+npm run cleanup
+
+pdflatex bachproef-tin.tex
+pdflatex bachproef-tin.tex
+makeglossaries bachproef-tin
 pdflatex bachproef-tin.tex
 biber bachproef-tin
 pdflatex bachproef-tin.tex
 pdflatex bachproef-tin.tex
+
+npm run cleanup
 
 clear
 

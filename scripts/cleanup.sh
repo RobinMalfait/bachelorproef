@@ -1,31 +1,33 @@
 #!/bin/bash
 
-rm -v ./*.aux > /dev/null 2>&1
-rm -v ./*.log > /dev/null 2>&1
-rm -v ./*.nav > /dev/null 2>&1
-rm -v ./*.out > /dev/null 2>&1
-rm -v ./*.snm > /dev/null 2>&1
-rm -v ./*.toc > /dev/null 2>&1
-rm -v ./*.bbl > /dev/null 2>&1
-rm -v ./*.blg > /dev/null 2>&1
-rm -v ./*.idx > /dev/null 2>&1
-rm -v ./*.ilg > /dev/null 2>&1
-rm -v ./*.ind > /dev/null 2>&1
-rm -v ./*.tcp > /dev/null 2>&1
-rm -v ./*.vrb > /dev/null 2>&1
-rm -v ./*.tps > /dev/null 2>&1
-rm -v ./*.log > /dev/null 2>&1
-rm -v ./*.lot > /dev/null 2>&1
-rm -v ./*.synctex.gz > /dev/null 2>&1
-rm -v ./*.fls > /dev/null 2>&1
-rm -v ./*.fdb_latexmk > /dev/null 2>&1
-rm -v ./*.vscodeLog > /dev/null 2>&1
-rm -v ./*.log > /dev/null 2>&1
-rm -v ./*.bcf > /dev/null 2>&1
-rm -v ./*.glo > /dev/null 2>&1
-rm -v ./*.glsdefs > /dev/null 2>&1
-rm -v ./*.ist > /dev/null 2>&1
-rm -v ./*.lof > /dev/null 2>&1
-rm -v ./*.run.xml > /dev/null 2>&1
-rm -v ./*.ps > /dev/null 2>&1
-rm -v ./*.dvi > /dev/null 2>&1
+rm ./*.aux > /dev/null 2>&1
+rm ./*.log > /dev/null 2>&1
+rm ./*.nav > /dev/null 2>&1
+rm ./*.out > /dev/null 2>&1
+rm ./*.snm > /dev/null 2>&1
+rm ./*.toc > /dev/null 2>&1
+rm ./*.bbl > /dev/null 2>&1
+rm ./*.blg > /dev/null 2>&1
+rm ./*.idx > /dev/null 2>&1
+rm ./*.ilg > /dev/null 2>&1
+rm ./*.ind > /dev/null 2>&1
+rm ./*.tcp > /dev/null 2>&1
+rm ./*.vrb > /dev/null 2>&1
+rm ./*.tps > /dev/null 2>&1
+rm ./*.log > /dev/null 2>&1
+rm ./*.lot > /dev/null 2>&1
+rm ./*.synctex.gz > /dev/null 2>&1
+rm ./*.fls > /dev/null 2>&1
+rm ./*.fdb_latexmk > /dev/null 2>&1
+rm ./*.vscodeLog > /dev/null 2>&1
+rm ./*.log > /dev/null 2>&1
+rm ./*.bcf > /dev/null 2>&1
+rm ./*.glo > /dev/null 2>&1
+rm ./*.glsdefs > /dev/null 2>&1
+rm ./*.ist > /dev/null 2>&1
+rm ./*.lof > /dev/null 2>&1
+rm ./*.run.xml > /dev/null 2>&1
+rm ./*.ps > /dev/null 2>&1
+rm ./*.dvi > /dev/null 2>&1
+
+echo "Cleaned."
