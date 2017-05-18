@@ -5,7 +5,7 @@ class AddAppointment {
   private DateTime date;
 
   // Wanneer er een slechte naamkeuze wordt gemaakt in de naam
-  // van de variabele, kan dit tot bugs lijden.
+  // van de variabele, kan dit tot bugs leiden.
   public AddAppointment(String person1, String person2, DateTime date) {
     this.person1 = person1;
     this.person2 = person2;
@@ -19,7 +19,7 @@ class AddAppointment {
   private String client;
   private DateTime date;
 
-  // Dit is al beter leesbaar, het gevaar bestaat er in agen & client
+  // Dit is al beter leesbaar, het gevaar bestaat er in agent & client
   // Van plaats te verwisselen. Bij 2 geldige strings zal dit dus geen
   // Exceptie gooien
   public AddAppointment(String agent, String client, DateTime date) {

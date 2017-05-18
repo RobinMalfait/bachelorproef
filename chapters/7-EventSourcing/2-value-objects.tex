@@ -5,13 +5,13 @@
 \section{Value Objects}
 \label{sec:value-objects}
 
-Value objects zijn objecten die zorgen dat een bepaalde waarde altijd in een geldige staat is. Bijvoorbeeld, er kan een value object zijn voor een Email. Dit email adres moet ten alle tijden geldig zijn. Dit kan afgedwongen worden door in de constructor van een klasse een waarde te ontvangen en deze te controleren. Indien deze waarde fout is wordt er een exceptie gegooid. Deze exceptie zal dan opgevangen worden in de lagen daarboven.
+Value objects zijn objecten die zorgen dat een bepaalde waarde altijd in een geldige staat is. Bijvoorbeeld, er kan een value object zijn voor een e-mail. Dit e-mailadres moet ten alle tijde geldig zijn. Dit kan afgedwongen worden door in de constructor van een klasse een waarde te ontvangen en deze te controleren. Indien deze waarde fout is, wordt er een exceptie gegooid. Deze exceptie zal dan opgevangen worden in de lagen daarboven.
 
-Een belangrijke regel bij Value objects is dat deze geen identiteit bevatten, ze hebben geen unieke identifier en zijn daarom geen entiteit. Value objects kunnen wel tot een entiteit behoren zoals Bijvoorbeeld een User entiteit.
+Een belangrijke regel bij Value objects is dat deze geen identiteit bevatten, ze hebben geen unieke identifier en zijn daarom geen entiteit. Value objects kunnen wel tot een entiteit behoren zoals bijvoorbeeld een User entiteit.
 
 Value objects bevatten ook bepaalde logica of methoden die met dat object gepaard gaan.
 
-Value objects geven ook betekenis aan de code. In het volgende code voorbeeld, is het niet meteen duidelijk welke parameter de verzender is, en welke de ontvanger is. Een mogelijke oplossing is goede namen geven aan de parameters.
+Value objects geven ook betekenis aan de code. In het volgende code voorbeeld is het niet meteen duidelijk welke parameter de verzender is, en welke de ontvanger is. Een mogelijke oplossing is goede namen geven aan de parameters.
 
 \codefragment{source/ValueObjects-BadExample.java}{Een minder goed voorbeeld van Value Objects}
 

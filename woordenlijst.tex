@@ -1,31 +1,113 @@
 %---------- Lijst afkortingen, termen -----------------------------------------
 
 %-------------------------------- acroniemen
-\newacronym{RDBMS}{RDBMS}{relational database management system}
+\newacronym[longplural={Relational Database Management System\'s}]{RDBMS}{RDBMS}{Relational Database Management System}
 \newacronym{SQL}{SQL}{Structured Query Language}
 \newacronym{GUID}{GUID}{Globally Unique Identifier}
 \newacronym{WORM}{WORM}{Write Once Read Many}
+\newacronym{ORM}{ORM}{Object Relational Mapper}
 \newacronym{CQS}{CQS}{Command Query Separation}
 \newacronym{CQRS}{CQRS}{Command Query Responsibility Segregation}
 \newacronym{DDD}{DDD}{Domain Driven Design/Development}
 \newacronym{CRUD}{CRUD}{Create Read Update Delete}
+\newacronym{OOP}{OOP}{Object Oriented Programming}
 
 %--------------------------------- woordenlijst
-\newglossaryentry{mysql}{
+
+\newglossaryentry{mysql}
+{
   name = MySQL,
-  text = MySQL,
-  description = {MySQL is een managementsysteem voor relationele databases (\gls{RDBMS}), SQL is de taal die wordt gebruikt om een database van dit systeem op te bouwen, te bevragen en te onderhouden.}
+  description = {MySQL is een managementsysteem voor relationele databases (\gls{RDBMS}), SQL is de taal die wordt gebruikt om een database van dit systeem op te bouwen, te bevragen en te onderhouden}
 }
 
-\newglossaryentry{meetups}{
-  name = meetups,
-  text = meetups,
+\newglossaryentry{graph}
+{
+  name = graph,
+  description = {...}
+}
+
+\newglossaryentry{meetup}
+{
+  name = meetup,
   description = {mini conferenties waar 2 à 3-tal mensen een presentatie gegeven omtrent een bepaald onderwerp en waar je aan netwerking kan doen}
+}
+
+\newglossaryentry{log}
+{
+  name = log,
+  description = {Een log file is een verzameling of een opname van evenementen die gebeurd zijn in een systeem}
+}
+
+\newglossaryentry{getter}
+{
+  name = getter,
+  description = {Een getter is een methode die informatie uit een object ophaalt, zonder dit object te muteren}
+}
+
+\newglossaryentry{setter}
+{
+  name = setter,
+  description = {Een setter is een methode die geen informatie uit een object ophaalt, maar het object muteert}
+}
+
+\newglossaryentry{void}
+{
+  name = void,
+  description = {Een type dat ``niets'' betekent}
+}
+
+\newglossaryentry{caching}
+{
+  name = caching,
+  description = {Caching is het principe van het resultaat van berekingen op te slaan, zodat de bereking niet opnieuw gedaan moet worden}
+}
+
+\newglossaryentry{cache}
+{
+  name = cache,
+  description = {Caching is het principe van het resultaat van berekingen op te slaan, zodat de bereking niet opnieuw gedaan moet worden}
+}
+
+\newglossaryentry{command}
+{
+  name = command,
+  description = {...}
+}
+
+\newglossaryentry{commandhandler}
+{
+  name = commandhandler,
+  description = {...}
+}
+
+\newglossaryentry{query}
+{
+  name = query,
+  description = {...}
+}
+
+\newglossaryentry{json}
+{
+  name = json,
+  description = {...}
+}
+
+\newglossaryentry{payload}
+{
+  name = payload,
+  description = {...}
+}
+
+\newglossaryentry{left fold}
+{
+  name = left fold,
+  description = {...}
 }
 
 %--------------------------------- Print me
 
 \printglossary[type=\acronymtype,title={Lijst van acroniemen}]
 \addcontentsline{toc}{chapter}{\textcolor{maincolor}{Lijst van acroniemen}}
+
 \printglossary
 \addcontentsline{toc}{chapter}{\textcolor{maincolor}{Verklarende woordenlijst}}

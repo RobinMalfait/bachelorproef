@@ -5,8 +5,8 @@
 \section{Testen}
 \label{sec:testen}
 
-Zoals besproken in Hoofdstuk~\ref{sec:messages}, zijn alle queries en commando\'s klassen die leesbaar zijn, en de naamgeving komt rechtstreeks van de business kant. Testen schrijven voor de domain logica zoals commando\'s en queries kunnen ook opgesteld worden door de business en gevalideerd worden door hen.
-De volgende structuur van testen kan aangenomen worden:
+Zoals besproken in Hoofdstuk~\ref{sec:messages}, zijn alle queries en commando’s klassen die leesbaar zijn, en de naamgeving komt rechtstreeks van de businesskant. Testen schrijven voor de domain logica zoals commando’s en queries kunnen ook opgesteld worden door de business en gevalideerd worden door hen.
+De volgende structuur van testen kan gebruikt worden:
 
 \begin{itemize}
   \item{Given: een lijst van events}
@@ -15,9 +15,9 @@ De volgende structuur van testen kan aangenomen worden:
 \end{itemize}
 
 Deze manier van testen levert automatisch documentatie op die gevalideerd kan worden door de business.
-Wanneer er nieuwe developers bijkomen, kunnen ze door naar de testen te kijken te weten komen hoe bepaalde zaken werken.
+Wanneer er nieuwe developers bijkomen, kunnen ze door het raadplegen van de automatische testen, te weten komen hoe bepaalde businessregels werken.
 
 \subsection{Debugging}
 \label{subsec:debugging}
 
-Het debuggen van een EventSourced systeem kan op volgende manier gebeuren: alle events worden opgeslagen, wat een developer kan doen is een reeks aan events programmeren of kopiëren uit een log tot waar het fout ging om zo stap voor stap door het process te lopen.
+Het debuggen van een EventSourced systeem kan op volgende manier gebeuren: alle events worden opgeslagen, een developer kan dan een reeks aan events programmeren of kopiëren uit een \gls{log}. De developer heeft dan de mogelijkheid om stap voor stap het proces te doorlopen met de data uit de \gls{log}, om zo te achterhalen waar het probleem zich bevond.
