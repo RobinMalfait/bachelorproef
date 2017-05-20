@@ -5,10 +5,12 @@
 \section{Projections}
 \label{sec:projections}
 
-Projections zijn een projectie van de huidige staat die berekend is uit alle voorgaande events. Bij een systeem waar er met een relationele databank wordt gewerkt, is de databank zelf de projectie, met als grote verschil dat daar ook de databank de enige echte ``single source of truth'' is. Dat is niet het geval bij een systeem met EventSourcing, daar is de ``single source of truth'' de events die opgeslagen zijn.
+Projections zijn een projectie van de huidige staat die berekend is uit alle voorgaande events. Bij een systeem waar er met een relationele databank wordt gewerkt, is de databank zelf de projectie, met als grote verschil dat daar ook de databank de enige echte \gls{ssot} is. Dat is niet het geval bij een systeem met EventSourcing, daar is de \gls{ssot} de events die opgeslagen zijn.
 
 Projections hebben het voordeel dat er meerdere kunnen zijn. Er kan een databank gegenereerd worden voor de businesskant die dan allerlei statistieken kan bekijken. Er kan ook een databank gegenereerd worden voor werknemers die met een bepaalde applicatie werken. Er kan zelfs een databank of ander opslagsysteem gevuld worden, los van de huidige databanken voor de andere partijen. Op deze manier zijn het systeem en de databank losgekoppeld van elkaar en dit door de flexibele projecties. 
 
-Deze projecties zijn een berekening uit de voorbije events, dit wilt ook zeggen dat er niet geoptimaliseerd moet worden voor de schrijfkant (Hoofdstuk~\ref{ch:CQRS}). Er kan wel geoptimaliseerd worden voor de leeskant. Er is geen nood om een aantal tabellen elke keer met elkaar te gaan joinen\footnote{Het samenvoegen van twee tabellen via de ``JOIN'' instructie binnen de \gls{SQL} taal.}, als er rechtstreeks naar 1 tabel geschreven wordt.
+Deze projecties zijn een berekening uit de voorbije events, dit wilt ook zeggen dat er niet geoptimaliseerd moet worden voor de schrijfkant (Hoofdstuk~\ref{ch:CQRS}). Er kan wel geoptimaliseerd worden voor de leeskant. Er is geen nood om een aantal tabellen elke keer met elkaar te gaan joinen\footnote{Het samenvoegen van twee tabellen via de ``JOIN'' instructie binnen de \gls{SQL} taal}, als er rechtstreeks naar 1 tabel geschreven wordt.
 
-Om een wijziging te kunnen doorvoeren in een aggregate, moet eerst de huidige state opgebouwd worden vanuit de DomainEvents. Dit kan echter inefficiënt zijn wanneer er duizenden events beschikbaar zijn. Een projectie kan dan perfect dienen als een \gls{cache}, om dit probleem op te lossen.
+Een projectie kan ook dienen als rapportering tool waarbij moeilijke businessvragen eenvoudiger beantwoord kunnen worden omdat al de voorbije events terug kunnen geraadpleegd worden.
+
+Om een wijziging te kunnen doorvoeren in een aggregate, moet eerst de huidige state opgebouwd worden vanuit de Domain Events. Dit kan echter inefficiënt zijn wanneer er duizenden events beschikbaar zijn. Een projectie kan dan perfect dienen als een \gls{cache}, om dit probleem op te lossen.

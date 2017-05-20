@@ -12,7 +12,7 @@ Binnen een applicatie met EventSourcing wordt er ook gebruik gemaakt van message
 \label{subsec:imperative-messages}
 
 De imperative of imperatieve messages, zijn messages die de intentie hebben om de ontvanger van dit bericht een actie te laten uitvoeren.
-Binnen EventSourcing is een typisch voorbeeld een \Gls{command}, waarbij het \Gls{command} de intentie heeft om een actie te laten uitvoeren door zijn \Gls{commandhandler}. Binnen een systeem zijn deze \Glspl{command} iets typisch dat uit de businesskant komt. Wanneer het volgende voorbeeld door iemand van de business gelezen wordt, weet die ook meteen wat er zal gebeuren, als er gewerkt wordt met deze \Gls{command}.
+Binnen EventSourcing is een typisch voorbeeld een \Gls{command}\footnote{\glsdesc{command}}, waarbij het \Gls{command} de intentie heeft om een actie te laten uitvoeren door zijn \Gls{commandhandler}\footnote{\glsdesc{commandhandler}}. Binnen een systeem zijn deze \Glspl{command} iets typisch dat uit de businesskant komt. Wanneer het volgende voorbeeld door iemand van de business gelezen wordt, weet die ook meteen wat er zal gebeuren, als er gewerkt wordt met deze \Gls{command}.
 
 \codefragment{source/Messages-ChangeAppointmentStartDate.java}{Een voorbeeld van een \Gls{command}}
 
@@ -21,7 +21,7 @@ Wanneer er met deze klasse gewerkt wordt (of met objecten van deze klasse), dan 
 \subsection{Interrogatory Messages}
 \label{subsec:interrogatory-messages}
 
-De interrogatory of ondervragende messages, zijn messages die iets vragen over de huidige state van de applicatie. In elke applicatie worden er zaken opgevraagd. Binnen EventSourcing wordt dit ook gedaan aan de hand van \Glspl{query}, deze \Glspl{query} gaan informatie opvragen van de huidige state. Deze \Glspl{query} worden ook opgelegd door de businesskant, de business kan, wanneer ze het voorbeeld zien, meteen begrijpen wat er zal gebeuren als er met deze \Gls{query} wordt gewerkt omdat het een 1-op-1 vertaling is van de business.
+De interrogatory of ondervragende messages, zijn messages die iets vragen over de huidige state van de applicatie. In elke applicatie worden er zaken opgevraagd. Binnen EventSourcing wordt dit ook gedaan aan de hand van \Glspl{query}\footnote{\glsdesc{query}}, deze \Glspl{query} gaan informatie opvragen van de huidige state. Deze \Glspl{query} worden ook opgelegd door de businesskant, de business kan, wanneer ze het voorbeeld zien, meteen begrijpen wat er zal gebeuren als er met deze \Gls{query} wordt gewerkt omdat het een 1-op-1 vertaling is van de business.
 
 \codefragment{source/Messages-MyAppointmentsForToday.java}{Een voorbeeld van een \Gls{query}}
 
@@ -30,10 +30,10 @@ Bij dit voorbeeld is het duidelijk dat er informatie opgevraagd wordt en dat er 
 \subsection{Informational Messages}
 \label{subsec:informational-messages}
 
-De informational of de informatieve messages, zijn messages die iets over zichzelf willen vertellen. Bij EventSourcing wordt dit uitgedrukt in DomainEvents. DomainEvents zijn de messages die opgeslagen zullen worden in de databank. DomainEvents worden ook meestal in de verleden tijd geschreven omdat ze benadrukken dat er iets gebeurd is.
+De informational of de informatieve messages, zijn messages die iets over zichzelf willen vertellen. Bij EventSourcing wordt dit uitgedrukt in Domain Events. Domain Events zijn de messages die opgeslagen zullen worden in de databank. Domain Events worden ook meestal in de verleden tijd geschreven omdat ze benadrukken dat er iets gebeurd is.
 
 \codefragment{source/Messages-AppointmentsStartDateHasBeenChanged.java}{Een voorbeeld van een DomainEvent}
 
-Dit voorbeeld lijkt sterk op het voorbeeld van de \Gls{command}, maar de intentie van beide klassen is totaal verschillend. De klasnamen zijn altijd expliciet, soms zijn ze wat lang maar het is duidelijk wat de bedoeling is. Doordat de messages zo expliciet geschreven zijn, kan er gemakkelijk mee gecommuniceerd worden wat het hele doel is van messages.
+Dit voorbeeld lijkt sterk op het voorbeeld van de \Gls{command}, maar de intentie van beide klassen is totaal verschillend. De klasnamen zijn altijd expliciet, soms zijn ze wat lang maar het is duidelijk wat de bedoeling is. Doordat de messages zo expliciet geschreven zijn, kan er gemakkelijk mee gecommuniceerd worden, wat het hele doel is van messages.
 
-Er mag ook geen gemeenschappelijke naam gezocht worden voor deze klassen om 'dubbele code' te verwijderen. Het zijn totaal aparte concepten, zelfs wanneer verschillende \Glspl{command} tot hetzelfde resultaat leiden, moet dit niet vervangen worden door 1 \Gls{command} \autocite{Verraes2014DDDLinguistic}. Vanaf dit gebeurt, komen er problemen naar boven. Wat als er extra informatie in een \Gls{command} moet maar niet in een DomainEvent of vice versa? De leesbaarheid van de code gaat ook achteruit, de communicatie wordt onduidelijk.
+Er mag ook geen gemeenschappelijke naam gezocht worden voor deze klassen om ``dubbele code'' te verwijderen. Het zijn totaal aparte concepten, zelfs wanneer verschillende \Glspl{command} tot hetzelfde resultaat leiden, moet dit niet vervangen worden door 1 \Gls{command} \autocite{Verraes2014DDDLinguistic}. Vanaf dit gebeurt, komen er problemen naar boven. Wat als er extra informatie in een \Gls{command} moet maar niet in een DomainEvent of vice versa? De leesbaarheid van de code gaat ook achteruit, de communicatie wordt onduidelijk.

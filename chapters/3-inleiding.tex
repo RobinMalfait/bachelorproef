@@ -12,8 +12,8 @@
 
 % \textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
 
-\section{Stand van zaken}
-\label{sec:stand-van-zaken}
+% \section{Stand van zaken}
+% \label{sec:stand-van-zaken}
 
 %% TODO: deze sectie (die je kan opsplitsen in verschillende secties) bevat je
 %% literatuurstudie. Vergeet niet telkens je bronnen te vermelden!
@@ -30,7 +30,7 @@
 
 Data is het belangrijkste gegeven van een bedrijf. Rapportering is van belang om de eisen van de klant nog beter te vervullen. Voorspellen van vragen die de business zou kunnen stellen binnen dit en 5 jaar, is de dag van vandaag moeilijk. Daarom is het interessant om alle informatie bij te houden om hier interessante rapportering op te kunnen uitvoeren. In een systeem met een \gls{RDBMS} wordt niet alle informatie bijgehouden. Bij het verwijderen of wijzigen van informatie is de voorgaande informatie verloren gegaan. Alle informatie bijhouden is dus interessant, maar wat zijn hier de voor- en nadelen van?
 
-De onderzoeksvraag luidt als volgt: Wanneer is EventSourcing een meerwaarde voor een bedrijf zoals Skedify (Hoofdstuk~\ref{ch:skedify}), waar ze gespecialiseerd zijn in online afspraakbeheersoftware?
+De onderzoeksvraag luidt als volgt: Wanneer is EventSourcing een meerwaarde voor een bedrijf zoals Skedify, waar ze gespecialiseerd zijn in online afspraakbeheersoftware?
 
 Hierbij worden ook volgende subvragen beantwoord:
 
@@ -51,7 +51,21 @@ De rest van deze bachelorproef is als volgt opgebouwd:
 
 In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
 
-%% TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
+In Hoofdstuk~\ref{ch:skedify} wordt er meer uitleg gegeven over het bedrijf Skedify, dat gebruikt wordt als concrete case voor deze bachelorproef.
+
+In Hoofdstuk~\ref{ch:CQRS} wordt een inleidend hoofdstuk gegeven van EventSourcing, namelijk \gls{CQRS}.
+
+In Hoofdstuk~\ref{ch:eventsourcing} wordt er dieper op EventSourcing ingegaan, hier komen ook al voor- en nadelen van EventSourcing bij kijken.
+
+In Hoofdstuk~\ref{ch:schaalbaarheid} wordt er gekeken naar de schaalbaarheid van een EventSourced systeem.
+
+In Hoofdstuk~\ref{ch:voordelen} wordt er gekeken naar de specifieke voordelen van EventSourcing wanneer dit gebruikt zou worden bij Skedify.
+
+In Hoofdstuk~\ref{ch:nadelen} wordt er gekeken naar de specifieke nadelen van EventSourcing wanneer dit gebruikt zou worden bij Skedify.
+
+In Hoofdstuk~\ref{ch:kosten} wordt er gekeken naar de kosten die bij EventSourcing komen kijken. Dit deels is opgesplitst in infrastructurele kosten, developer kosten en performance kosten.
+
+In Hoofdstuk~\ref{ch:POC} wordt er een proof of concept uitgewerkt die een 2-tal functies van Skedify omzet in EventSourcing. Hierbij wordt er ook gekeken naar de voor- en nadelen.
 
 In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en wordt een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
 

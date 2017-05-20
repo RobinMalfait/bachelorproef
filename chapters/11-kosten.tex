@@ -5,17 +5,17 @@
 \chapter{Kosten}
 \label{ch:kosten}
 
-De kosten van EventSourcing kunnen opgedeeld worden in 3 grote delen. Het eerste deel gaat over de fysieke infrastructuur kosten die EventSourcing met zich meebrengt. Het opslaan van alle belangrijke businessdata doorheen de jaren dat de applicatie werkt, brengt bepaalde kosten met zich mee. Het tweede deel gaat over de kosten van de developers, EventSourcing is een andere manier om met gegevens om te gaan en dus ook een andere manier om code te schrijven. Tot slot gaat het derde deel over de kost van performance aangezien elk event overlopen moet worden, kan dit een performance probleem met zich mee brengen.
+De kosten van EventSourcing kunnen opgedeeld worden in 3 grote delen. Het eerste deel gaat over de fysieke infrastructuur kosten die EventSourcing met zich meebrengt. Het opslaan van alle belangrijke businessdata doorheen de jaren dat de applicatie werkt, brengt bepaalde kosten met zich mee. Het tweede deel gaat over de kosten van de developers, EventSourcing is een andere manier om met gegevens om te gaan en dus ook een andere manier om code te schrijven. Tot slot gaat het derde deel over de kost van performance. Aangezien elk event overlopen moet worden, kan dit een performance probleem met zich mee brengen.
 
 \subsection{Infrastructurele kosten}
 \label{subsec:infrastructurele-kosten}
 
 Er van uitgaande dat events opgeslagen worden als \gls{JSON} objecten kan hier vrij snel een berekening op gedaan worden. Hier zijn volgende zaken waar er rekening mee gehouden moet worden: grootte van het \gls{JSON} object en het aantal requests.
-De grootte van een \gls{JSON} object voor een bepaald event is niet zo groot. Om dit te weten te komen, wordt de grootte van de \gls{payload} om een nieuwe afspraak te maken genomen en als \gls{JSON} object opgeslagen. Nu we dit event hebben opgeslagen, kan de grootte in bytes uitgelezen worden. De keuze om de payload van een nieuwe appointment te gebruiken is omdat deze het meest voorkomt in de applicatie van Skedify. De grootte van dit event bedraagt 168 bytes.
+De grootte van een \gls{JSON} object voor een bepaald event is niet zo groot. Om dit te weten te komen, wordt de grootte van de \gls{payload}\footnote{\glsdesc{payload}} om een nieuwe afspraak te maken genomen en als \gls{JSON} object opgeslagen. Nu we dit event hebben opgeslagen, kan de grootte in bytes uitgelezen worden. De keuze om de payload van een nieuwe appointment te gebruiken is omdat deze het meest voorkomt in de applicatie van Skedify. De grootte van dit event bedraagt 168 bytes.
 Uit informatie van New Relic, een platform dat door Skedify gebruikt wordt om aan monitoring te doen, blijkt dat er in 1 maand tijd 143500 requests worden uitgevoerd die een schrijfactie uitvoeren.
 Met deze gegevens kan er berekend worden hoeveel disk capaciteit er nodig is om deze events voor lange tijd bij te houden.
 
-\begin{equation}
+\begin{equation} \label{eq:disk-capaciteit}
 \frac{143 500 \text{ requests}}{\text{ maand}} \times 168 \text{ bytes} \times 5 \text{ jaar} = 1.37 \text{ GB} 
 \end{equation}
 
@@ -38,7 +38,11 @@ Requests / maand & Event grootte & Periode & Nodige disk capaciteit \\ \midrule
 \label{disk-capaciteit}
 \end{table}
 
-\footnotetext{De gegevens staan voor de herkenbaarheid met het kilobyte en gigabyte symbool, maar eigenlijk wordt er kibibyte en gibibyte bedoelt.}
+\footnotetext{De gegevens staan voor de herkenbaarheid met het kilobyte en gigabyte symbool, maar eigenlijk wordt er kibibyte en gibibyte bedoeld}
+
+De gegevens in tabel \ref{disk-capaciteit} kunnen als volgt geïnterpreteerd worden. Het aantal ``requests/maand'' zijn gegevens die gebaseerd zijn op informatie van New Relic, ze worden groter om de toekomst te simuleren. De ``Event grootte'' is de grootte van de \gls{payload}. Er wordt van uitgegaan dat deze groter wordt over tijd, maar uiteindelijk stagneert. Daarna komt de ``periode'', deze beschrijft hoelang het event bijgehouden moet worden. Tot slot, de ``nodige disk capaciteit'', is de hoeveelheid capaciteit die nodig is om de events op te slaan op basis van de voorbije gegevens en de formule beschreven in vergelijking \ref{eq:disk-capaciteit}.
+
+De laatste lijn van deze tabel is een uitschieter om te bewijzen dat zelfs na 50 jaar, er maar nood is aan een harde schijf van 1 TB om al deze gegevens bij te houden.
 
 Zoals te zien in tabel \ref{disk-capaciteit} is het helemaal geen probleem om de events op te slaan omdat deze helemaal niet zo groot zijn. De kost is 1 harde schijf extra, die elk jaar goedkoper en goedkoper wordt. Meer nog, zolang de datahoeveelheid onder Kryder’s law blijft, wordt het data opslagmechanisme alleen maar goedkoper over tijd.
 
@@ -50,16 +54,20 @@ Zoals te zien in tabel \ref{disk-capaciteit} is het helemaal geen probleem om de
 
 Een tweede kost waar er rekening mee moet worden gehouden zijn backups. Zoals vermeld in Hoofdstuk~\ref{sec:projections} zijn de databanken die gebruikt worden projecties van de afgebeelde events. Vermits deze een berekening zijn, volstaat het om enkel van de events een backup te nemen, omdat de projecties opnieuw berekend kunnen worden\footnote{Er mag niet vergeten worden om een backup te nemen van data die niet in de databank wordt opgeslagen, zoals afbeeldingen}.
 
+Uit een gesprek met de product owner van Skedify, Christophe Thelen, bleek dat door de lage hoeveelheid data die ze nu hebben er helemaal geen problemen zijn met backups. Het is wel een interessante piste naar de toekomst toe, om enkel belangrijke data te gaan backuppen en andere data te laten berekenen, net zoals projections werken.
+
 \subsection{Developer kosten}
 \label{subsec:developer-kosten}
 
-Het is een andere manier van werken dus zullen de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com. Zowel bij Skedify, als bij andere bedrijven wordt er gebruik gemaakt van \gls{OOP}. EventSourcing gaat erg goed samen met functional programming omdat de huidige state een \gls{leftfold} is van vorige events.
+Het is een andere manier van werken dus zullen de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com. Zowel bij Skedify, als bij andere bedrijven wordt er gebruik gemaakt van \gls{OOP}. EventSourcing gaat erg goed samen met functional programming omdat de huidige state een \gls{leftfold}\footnote{\glsdesc{leftfold}} is van vorige events.
 
 \begin{equation}
 \text{current state} = f(\text{events}, \text{action})
 \end{equation}
 
 Functioneel leren programmeren is dus een meerwaarde.
+
+Bij Skedify zijn ze momenteel met een 5-tal developers, de extra kost van lessen via https://eventsourcery.com is zo klein dat ze bij Skedify hier geen probleem van maken. Het is wel zo, dat door de nieuwe en andere manier van denken er geen ruimte is om met EventSourcing te gaan werken. Dit omdat niet alle noden van de klanten gekend zijn en omdat Skedify nog zo jong in zijn schoenen staat.
 
 \subsection{Performance kosten}
 \label{subsec:performance-kosten}
