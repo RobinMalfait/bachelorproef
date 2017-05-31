@@ -16,23 +16,23 @@ Binnen EventSourcing is een typisch voorbeeld een \Gls{command}\footnote{\glsdes
 
 \codefragment{source/Messages-ChangeAppointmentStartDate.java}{Een voorbeeld van een \Gls{command}}
 
-Wanneer er met deze klasse gewerkt wordt (of met objecten van deze klasse), dan wordt er verwacht dat de ontvanger iets zal wijzigen.
+Wanneer er met deze klasse gewerkt wordt (of met objecten van deze klasse), dan wordt er verwacht, maar niet gegarandeerd, dat de ontvanger iets zal wijzigen. De ontvanger kan het bericht ook weigeren door middel van een exceptie te gooien. Een voorbeeld waarin de ontvanger het bericht kan weigeren is wanneer de gebruiker geen rechten heeft om een bepaalde actie uit te voeren.
 
 \subsection{Interrogatory Messages}
 \label{subsec:interrogatory-messages}
 
-De interrogatory of ondervragende messages, zijn messages die iets vragen over de huidige state van de applicatie. In elke applicatie worden er zaken opgevraagd. Binnen EventSourcing wordt dit ook gedaan aan de hand van \Glspl{query}\footnote{\glsdesc{query}}, deze \Glspl{query} gaan informatie opvragen van de huidige state. Deze \Glspl{query} worden ook opgelegd door de businesskant, de business kan, wanneer ze het voorbeeld zien, meteen begrijpen wat er zal gebeuren als er met deze \Gls{query} wordt gewerkt omdat het een 1-op-1 vertaling is van de business.
+De interrogatory of ondervragende messages, zijn messages die iets vragen over de huidige \gls{state} van de applicatie. In elke applicatie worden er zaken opgevraagd. Binnen EventSourcing wordt dit ook gedaan aan de hand van \Glspl{query}\footnote{\glsdesc{query}}, deze \Glspl{query} gaan informatie opvragen van de huidige \gls{state}. Deze \Glspl{query} worden ook opgelegd door de businesskant, de business kan, wanneer ze het voorbeeld zien, meteen begrijpen wat er zal gebeuren als er met deze \Gls{query} wordt gewerkt omdat het een 1-op-1 vertaling is van de business.
 
 \codefragment{source/Messages-MyAppointmentsForToday.java}{Een voorbeeld van een \Gls{query}}
 
-Bij dit voorbeeld is het duidelijk dat er informatie opgevraagd wordt en dat er geen wijzigingen aan de huidige state zullen gebeuren.
+Bij dit voorbeeld is het duidelijk dat er informatie opgevraagd wordt en dat er geen wijzigingen aan de huidige \gls{state} zullen gebeuren.
 
 \subsection{Informational Messages}
 \label{subsec:informational-messages}
 
 De informational of de informatieve messages, zijn messages die iets over zichzelf willen vertellen. Bij EventSourcing wordt dit uitgedrukt in Domain Events. Domain Events zijn de messages die opgeslagen zullen worden in de databank. Domain Events worden ook meestal in de verleden tijd geschreven omdat ze benadrukken dat er iets gebeurd is.
 
-\codefragment{source/Messages-AppointmentsStartDateHasBeenChanged.java}{Een voorbeeld van een DomainEvent}
+\codefragment{source/Messages-AppointmentsStartDateHasChanged.java}{Een voorbeeld van een DomainEvent}
 
 Dit voorbeeld lijkt sterk op het voorbeeld van de \Gls{command}, maar de intentie van beide klassen is totaal verschillend. De klasnamen zijn altijd expliciet, soms zijn ze wat lang maar het is duidelijk wat de bedoeling is. Doordat de messages zo expliciet geschreven zijn, kan er gemakkelijk mee gecommuniceerd worden, wat het hele doel is van messages.
 

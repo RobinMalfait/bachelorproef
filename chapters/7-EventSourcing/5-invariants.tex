@@ -5,7 +5,7 @@
 \section{Invariants}
 \label{sec:invariants}
 
-Invariants zijn regels die opgelegd zijn door de business. Invariants worden gecontroleerd alvorens een domain event opgeslagen wordt. Elke invariant moet goedgekeurd worden, want eens een domain event opgeslagen is, kan dit niet meer ongedaan gemaakt worden. Er kan wel een nieuw domain event opgeslagen worden om deze wijziging teniet te doen. Invariant controle wordt uitgevoerd bij het triggeren van een command, telkens wanneer een input niet aan deze invariant voldoet moet er een exception gegooid worden. Op deze manier kunnen er inconsistenties opgevangen worden.
+Invariants zijn regels die opgelegd zijn door de business. Invariants worden gecontroleerd alvorens een domain event opgeslagen wordt. Elke invariant moet goedgekeurd worden, want eens een domain event opgeslagen is, kan dit niet meer ongedaan gemaakt worden. Er kan wel een nieuw domain event opgeslagen worden om deze wijziging teniet te doen. Invariant controle wordt uitgevoerd bij het triggeren van een command, telkens wanneer een input niet aan deze invariant voldoet moet er een exception gegooid worden \autocite{Verraes2015FormCommandModel}. Op deze manier kunnen er inconsistenties opgevangen worden.
 
 Invariants kunnen ook gecontroleerd worden in Value Objects (hoofdstuk ~\ref{sec:value-objects}) en ook deze zullen een exception gooien indien er een probleem optreedt.
-Een exceptie is een eenvoudige manier om de applicatie vroegtijdig te laten stoppen en een bericht aan de gebruiker terug te geven.
+Een exceptie is een eenvoudige manier om de applicatie vroegtijdig te laten stoppen en een bericht aan de gebruiker terug te geven \autocite{Verraes2015Messages}.

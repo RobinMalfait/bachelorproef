@@ -17,7 +17,7 @@ Daarom is het ook belangrijk bij commands om een \gls{GUID} op voorhand te defin
 \subsection{Transactional Consistency}
 \label{subsec:transactional-consistency}
 
-Het voordeel aan transactional consistency is dat de respons meteen terug gegeven wordt. Alle delen van de applicatie zijn doorlopen en alle gegevens zijn gepersisteerd. De grote nadelen zijn dat de applicatie volledig doorlopen moet worden of dat de applicatie een exponentieel hoog aantal requests binnen krijgt en dus alles meteen moet afhandelen. Hierdoor kan de respons veel trager zijn en dit kan resulteren in het crashen van de applicatie.
+Het voordeel aan transactional consistency is dat de respons meteen terug gegeven wordt. Alle delen van de applicatie zijn doorlopen en alle gegevens zijn gepersisteerd. De grote nadelen zijn dat de applicatie volledig doorlopen moet worden of dat de applicatie een exponentieel hoog aantal \glspl{request} binnen krijgt en dus alles meteen moet afhandelen. Hierdoor kan de respons veel trager zijn en dit kan resulteren in het crashen van de applicatie.
 Transactional consistency is ook moeilijker schaalbaar omdat alles in 1 keer uitgevoerd wordt.
 
 \begin{figure}[h]

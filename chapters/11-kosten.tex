@@ -5,28 +5,28 @@
 \chapter{Kosten}
 \label{ch:kosten}
 
-De kosten van EventSourcing kunnen opgedeeld worden in 3 grote delen. Het eerste deel gaat over de fysieke infrastructuur kosten die EventSourcing met zich meebrengt. Het opslaan van alle belangrijke businessdata doorheen de jaren dat de applicatie werkt, brengt bepaalde kosten met zich mee. Het tweede deel gaat over de kosten van de developers, EventSourcing is een andere manier om met gegevens om te gaan en dus ook een andere manier om code te schrijven. Tot slot gaat het derde deel over de kost van performance. Aangezien elk event overlopen moet worden, kan dit een performance probleem met zich mee brengen.
+De kosten van EventSourcing kunnen opgedeeld worden in 3 grote delen. Het eerste deel gaat over de fysieke infrastructuur kosten die EventSourcing met zich meebrengt. Het opslaan van alle belangrijke businessdata doorheen de jaren dat de applicatie werkt, brengt bepaalde kosten met zich mee. Het tweede deel gaat over de kosten van de developers, EventSourcing is een andere manier om met gegevens om te gaan en dus ook een andere manier om code te schrijven. Tot slot gaat het derde deel over de kost van performance. Aangezien elk event overlopen moet worden, om de huidige \gls{state} te berekenen, wil dit zeggen dat voor elk event een berekening zal uitgevoerd worden. De huidige \gls{state} opbouwen heeft dus geen $constante$ kost maar een kost van $N$ events. Deze kost wordt ook alsmaar groter naarmate dat het aantal events groeit.
 
 \subsection{Infrastructurele kosten}
 \label{subsec:infrastructurele-kosten}
 
-Er van uitgaande dat events opgeslagen worden als \gls{JSON} objecten kan hier vrij snel een berekening op gedaan worden. Hier zijn volgende zaken waar er rekening mee gehouden moet worden: grootte van het \gls{JSON} object en het aantal requests.
+Er van uitgaande dat events opgeslagen worden als \gls{JSON} objecten kan hier vrij snel een berekening op gedaan worden. Hier zijn volgende zaken waar er rekening mee gehouden moet worden: grootte van het \gls{JSON} object en het aantal \glspl{request}.
 De grootte van een \gls{JSON} object voor een bepaald event is niet zo groot. Om dit te weten te komen, wordt de grootte van de \gls{payload}\footnote{\glsdesc{payload}} om een nieuwe afspraak te maken genomen en als \gls{JSON} object opgeslagen. Nu we dit event hebben opgeslagen, kan de grootte in bytes uitgelezen worden. De keuze om de payload van een nieuwe appointment te gebruiken is omdat deze het meest voorkomt in de applicatie van Skedify. De grootte van dit event bedraagt 168 bytes.
-Uit informatie van New Relic, een platform dat door Skedify gebruikt wordt om aan monitoring te doen, blijkt dat er in 1 maand tijd 143500 requests worden uitgevoerd die een schrijfactie uitvoeren.
+Uit informatie van New Relic, een platform dat door Skedify gebruikt wordt om aan monitoring te doen, blijkt dat er in 1 maand tijd 143500 \glspl{request} worden uitgevoerd die een schrijfactie uitvoeren.
 Met deze gegevens kan er berekend worden hoeveel disk capaciteit er nodig is om deze events voor lange tijd bij te houden.
 
 \begin{equation} \label{eq:disk-capaciteit}
-\frac{143 500 \text{ requests}}{\text{ maand}} \times 168 \text{ bytes} \times 5 \text{ jaar} = 1.37 \text{ GB} 
+\frac{143 500 \text{ \glspl{request}}}{\text{ maand}} \times 168 \text{ bytes} \times 5 \text{ jaar} = 1.37 \text{ GB} 
 \end{equation}
 
-Dit wilt zeggen dat er 1.37GB plaats moet voorzien worden als men de events wilt opslaan voor 5 jaar. In de volgende tabel zal er een assumptie gemaakt worden dat het aantal requests doorheen de jaren zal stijgen en dat het aantal bytes voor een event ook zal stijgen.
+Dit wilt zeggen dat er 1.37GB plaats moet voorzien worden als men de events wilt opslaan voor 5 jaar. In de volgende tabel zal er een assumptie gemaakt worden dat het aantal \glspl{request} doorheen de jaren zal stijgen en dat het aantal bytes voor een event ook zal stijgen.
 
 \begin{table}[h]
 \centering
 \caption[Disk capaciteit nodig om alle events op te slaan]{Disk capaciteit nodig om alle events op te slaan\footnotemark}
 \begin{tabular}{@{}llll@{}}
 \toprule
-Requests / maand & Event grootte & Periode & Nodige disk capaciteit \\ \midrule
+\Glspl{request} / maand & Event grootte & Periode & Nodige disk capaciteit \\ \midrule
 150 000 & 500 bytes & 10 jaar & 8.5 GB \\
 200 000 & 750 bytes & 10 jaar & 17.01 GB \\
 300 000 & 1 kB & 10 jaar & 34.83 GB \\
@@ -40,14 +40,14 @@ Requests / maand & Event grootte & Periode & Nodige disk capaciteit \\ \midrule
 
 \footnotetext{De gegevens staan voor de herkenbaarheid met het kilobyte en gigabyte symbool, maar eigenlijk wordt er kibibyte en gibibyte bedoeld}
 
-De gegevens in tabel \ref{disk-capaciteit} kunnen als volgt geïnterpreteerd worden. Het aantal ``requests/maand'' zijn gegevens die gebaseerd zijn op informatie van New Relic, ze worden groter om de toekomst te simuleren. De ``Event grootte'' is de grootte van de \gls{payload}. Er wordt van uitgegaan dat deze groter wordt over tijd, maar uiteindelijk stagneert. Daarna komt de ``periode'', deze beschrijft hoelang het event bijgehouden moet worden. Tot slot, de ``nodige disk capaciteit'', is de hoeveelheid capaciteit die nodig is om de events op te slaan op basis van de voorbije gegevens en de formule beschreven in vergelijking \ref{eq:disk-capaciteit}.
+De gegevens in tabel \ref{disk-capaciteit} kunnen als volgt geïnterpreteerd worden. Het aantal ``\glspl{request}/maand'' zijn gegevens die gebaseerd zijn op informatie van New Relic, ze worden groter om de toekomst te simuleren. De ``Event grootte'' is de grootte van de \gls{payload}. Er wordt van uitgegaan dat deze groter wordt over tijd, maar uiteindelijk stagneert. Daarna komt de ``periode'', deze beschrijft hoelang het event bijgehouden moet worden. Tot slot, de ``nodige disk capaciteit'', is de hoeveelheid capaciteit die nodig is om de events op te slaan op basis van de voorbije gegevens en de formule beschreven in vergelijking \ref{eq:disk-capaciteit}.
 
 De laatste lijn van deze tabel is een uitschieter om te bewijzen dat zelfs na 50 jaar, er maar nood is aan een harde schijf van 1 TB om al deze gegevens bij te houden.
 
-Zoals te zien in tabel \ref{disk-capaciteit} is het helemaal geen probleem om de events op te slaan omdat deze helemaal niet zo groot zijn. De kost is 1 harde schijf extra, die elk jaar goedkoper en goedkoper wordt. Meer nog, zolang de datahoeveelheid onder Kryder’s law blijft, wordt het data opslagmechanisme alleen maar goedkoper over tijd.
+Zoals te zien in tabel \ref{disk-capaciteit} is het helemaal geen probleem om de events op te slaan omdat deze helemaal niet zo groot zijn. De kost is 1 harde schijf extra, die elk jaar goedkoper en goedkoper wordt. Meer nog, zolang de datahoeveelheid onder de wet van Kryder\footnote{De assumptie dat de schijfdichtheid, ook wel de oppervlaktedichtheid genoemd, elke dertien maanden zal verdubbelen. De implicatie van de wet van Kryder is dat als de oppervlaktedichtheid verbetert, de opslag goedkoper wordt \autocite{walter2005kryder}} blijft (zie figuur \ref{fig:krydersslowdown}), wordt het data opslagmechanisme alleen maar goedkoper over tijd.
 
 \begin{figure}[h]
-\caption{Kryder slowdown. Chart by Preeti Gupta at UCSC.}
+\caption{Kryder slowdown. Chart by Preeti Gupta at UCSC.} \label{fig:krydersslowdown}
 \centering
 \includegraphics[width=0.75\textwidth]{img/kryder-slowdown}
 \end{figure}
@@ -59,10 +59,10 @@ Uit een gesprek met de product owner van Skedify, Christophe Thelen, bleek dat d
 \subsection{Developer kosten}
 \label{subsec:developer-kosten}
 
-Het is een andere manier van werken dus zullen de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com. Zowel bij Skedify, als bij andere bedrijven wordt er gebruik gemaakt van \gls{OOP}. EventSourcing gaat erg goed samen met functional programming omdat de huidige state een \gls{leftfold}\footnote{\glsdesc{leftfold}} is van vorige events.
+Het is een andere manier van werken dus zullen de developers ook op de hoogte gebracht worden hoe ze met deze technologie moeten omgaan. Er zijn verschillende resources beschikbaar, waaronder https://eventsourcery.com. Zowel bij Skedify, als bij andere bedrijven wordt er gebruik gemaakt van \gls{OOP}. EventSourcing gaat erg goed samen met functional programming omdat de huidige \gls{state} een \gls{leftfold}\footnote{\glsdesc{leftfold}} is van vorige events.
 
 \begin{equation}
-\text{current state} = f(\text{events}, \text{action})
+\text{current \gls{state}} = foldl(\text{f}, \text{init}, \text{events})
 \end{equation}
 
 Functioneel leren programmeren is dus een meerwaarde.
@@ -72,4 +72,4 @@ Bij Skedify zijn ze momenteel met een 5-tal developers, de extra kost van lessen
 \subsection{Performance kosten}
 \label{subsec:performance-kosten}
 
-Telkens wanneer er een nieuwe command uitgevoerd wordt zoals vernoemd in Hoofdstuk~\ref{subsec:imperative-messages}, moeten alle events uit de EventStore overlopen worden om de huidige staat van het object op te bouwen. Dit wil zeggen dat bij elk nieuw event, de applicatie trager zal worden. In kleine en middelmatige applicaties heeft dit geen gevolgen, naar grotere applicaties toe heeft dit grotere gevolgen. Hiervoor is een oplossing van snapshots. Een snapshot is de huidige state van een object na het overlopen van x aantal events. Deze kunnen in de EventStore opgeslagen worden, in een tabel naast de events zelf. Telkens wanneer de klasse beschrijving zou veranderen, moeten de snapshots opnieuw gegenereerd worden. Een tweede optie is om de current state ook op te slaan in memory, via deze weg moeten er geen events opnieuw afgespeeld worden om de huidige state van een object te kunnen bepalen omdat deze reeds beschikbaar is.
+Telkens wanneer er een nieuwe command uitgevoerd wordt zoals vernoemd in Hoofdstuk~\ref{subsec:imperative-messages}, moeten alle events uit de EventStore overlopen worden om de huidige staat van het object op te bouwen. Dit wil zeggen dat bij elk nieuw event, de applicatie trager zal worden. In kleine en middelmatige applicaties heeft dit geen gevolgen, naar grotere applicaties toe heeft dit grotere gevolgen~\autocite{MicrosoftIntroducingES}. Hiervoor is een oplossing van snapshots (\textcite{Oliver2009Snapshots}, \textcite{chassaing2010event}). Een snapshot is de huidige \gls{state} van een object na het overlopen van x aantal events. Deze kunnen in de EventStore opgeslagen worden, in een tabel naast de events zelf. Telkens wanneer de klasse beschrijving zou veranderen, moeten de snapshots opnieuw gegenereerd worden. Een tweede optie is om de current \gls{state} ook op te slaan in memory, via deze weg moeten er geen events opnieuw afgespeeld worden om de huidige \gls{state} van een object te kunnen bepalen omdat deze reeds beschikbaar is. Hierbij moet ook de in memory current \gls{state} opnieuw berekend worden als de klasse beschrijving wijzigt.

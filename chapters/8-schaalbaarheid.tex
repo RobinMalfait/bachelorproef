@@ -5,7 +5,7 @@
 \chapter{Schaalbaarheid}
 \label{ch:schaalbaarheid}
 
-Een systeem dat gebruik maakt van EventSourcing, kan geschaald worden. Het schalen is relatief gemakkelijk door volgende redenen.
+Een systeem dat gebruik maakt van EventSourcing, kan (horizontaal) geschaald worden, dit wil zeggen dat men een nieuwe server kan opzetten en daarop de applicatie kan laten draaien. Deze server kan dan ook \glspl{request} ontvangen van de clients waardoor het systeem meer \glspl{request} kan afhandelen. Het schalen is relatief gemakkelijk door volgende redenen.
 De EventStore is een append-only database, er kan altijd een kopie genomen worden van deze database. Er moet niet gekeken worden of er al dan niet wijzigingen zijn in de data en welke de correcte data is. Synchroniseren van meerdere EventStores is een kwestie van ontbrekende rijen aan te vullen. Hiervoor kan er een mechanisme gebruikt worden zoals ``geef alle events na id X\footnote{een onbekende variabele}''.
 Schalen van de applicatie zelf kan als volgt gebeuren: er kunnen projecties bijgemaakt worden die zichzelf gaan ``voeden'' met alle events uit de EventStore. Van zodra ze up-to-date zijn met de EventStore kunnen ze als projection (zie Hoofdstuk~\ref{sec:projections}) geregistreerd worden, om live naar de events te luisteren.
 

@@ -1,7 +1,7 @@
 %---------- Lijst afkortingen, termen -----------------------------------------
 
 %-------------------------------- acroniemen
-\newacronym[longplural={Relational Database Management System’s}]{RDBMS}{RDBMS}{Relational Database Management System}
+\newacronym[longplural={Relationele Database Management Systemen}]{RDBMS}{RDBMS}{Relationeel Database Management Systeem}
 \newacronym{CQRS}{CQRS}{Command Query Responsibility Segregation}
 \newacronym{CQS}{CQS}{Command Query Separation}
 \newacronym{CRUD}{CRUD}{Create Read Update Delete}
@@ -21,10 +21,33 @@
   description = {MySQL is een managementsysteem voor relationele databases (\gls{RDBMS}), SQL is de taal die wordt gebruikt om een database van dit systeem op te bouwen, te bevragen en te onderhouden}
 }
 
+\newglossaryentry{redis}
+{
+  name = Redis,
+  description = {Een in-memory, key-value, database.}
+}
+
+\newglossaryentry{state}
+{
+  name = state,
+  description = {De state van een applicatie is de huidige staat waarin een applicatie zich bevindt.}
+}
+\newglossaryentry{pattern}
+{
+  name = {software design pattern},
+  description = {Een software design pattern is een patroon die een herbruikbare oplossing aanbiedt voor veel voorkomende problemen binnen de context van software ontwikkeling.}
+}
+
 \newglossaryentry{graph}
 {
   name = {Graph Database},
   description = {Een database waarbij er grafen structuren worden gebruikt om gegevens op te slaan in plaats van rijen en kolommen, ze maken gebruik van nodes en edges}
+}
+
+\newglossaryentry{request}
+{
+  name = request,
+  description = {Een netwerk verzoek van een client naar een server}
 }
 
 \newglossaryentry{meetup}
@@ -91,6 +114,7 @@
 {
   name = Query,
   description = {Een message die de intentie heeft informatie op te vragen uit het systeem}
+  plural = Queries
 }
 
 \newglossaryentry{payload}

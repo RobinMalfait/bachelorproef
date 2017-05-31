@@ -5,7 +5,7 @@
 \section{Aggregates}
 \label{sec:aggregates}
 
-Aggregate is een patroon die in de \gls{DDD} wereld gebruikt wordt \autocite{FowlerAggregate}. Aggregaten zijn de entiteiten die behoren tot het domein. Een aggregaat is een entiteit die zal zorgen dat invariants (besproken in \ref{sec:invariants}) gegarandeerd zullen worden. Eens dit het geval is, zal de aggregaat er voor zorgen dat de juiste Domain Events opgeslagen worden en de state van de applicatie wordt gewijzigd.
+Een Aggregate is een \gls{pattern} die in de \gls{DDD} wereld gebruikt wordt \autocite{FowlerAggregate}. Aggregaten zijn de entiteiten die behoren tot het domein. Een aggregaat is een entiteit die zal zorgen dat invariants (besproken in \ref{sec:invariants}) gegarandeerd zullen worden. Eens dit het geval is, zal de aggregaat er voor zorgen dat de juiste Domain Events opgeslagen worden en de \gls{state} van de applicatie gewijzigd wordt, naar de nieuwe \gls{state} op basis van deze Domain Events.
 
 Deze aggregaten moeten correct gekozen worden, zodat er geen gevaar is dat er ``God'' aggregaten ontstaan. Een ``God'' aggregaat is een aggregaat dat alles in een applicatie doet, in de meeste gevallen is dit een ``User'' aggregaat.
 

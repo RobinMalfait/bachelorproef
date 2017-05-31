@@ -5,10 +5,10 @@
 \section{Event Store}
 \label{sec:event-store}
 
-De EventStore is een relevant concept bij EventSourcing. De EventStore is de plaats waar alle Domain Events opgeslagen zullen worden. De EventStore is een append-only databank waar enkel nieuwe events aan toegevoegd kunnen worden, maar geen events kunnen verwijderd worden. Om een Domain Event ongedaan te maken, moet er een nieuw event opgeslagen worden die het oude event teniet doet. De EventStore kan elk soort databank zijn, er is ook een speciale databank ontwikkeld die is te vinden op https://geteventstore.com. Voor deze bachelorproef, en de proof of concept zal er gebruik gemaakt worden van een simpele EventStore in \gls{mysql}\footnote{\glsdesc{mysql}}. Een EventStore is helemaal niet zo moeilijk qua structuur, het bevat volgende minimale velden:
+De EventStore is een relevant concept bij EventSourcing. De EventStore is de plaats waar alle Domain Events opgeslagen zullen worden. De EventStore is een append-only databank waar enkel nieuwe events aan toegevoegd kunnen worden, maar geen events kunnen verwijderd worden. Om een Domain Event ongedaan te maken, moet er een nieuw event opgeslagen worden die het oude event teniet doet. De EventStore kan elk soort databank zijn, er is ook een speciale databank ontwikkeld die is te vinden op https://geteventstore.com. Voor deze bachelorproef, en de proof of concept zal er gebruik gemaakt worden van een simpele EventStore in een \gls{JSON} bestand. Een EventStore bevat volgende minimale velden:
 
 \begin{itemize}
-  \item{id, een simpele id, die autoincrementeel kan zijn}
+  \item{id, een simpele id, die autoincrementeel kan zijn. Dit omdat de volgorde globaal en chronologisch gegarandeerd kan worden.}
   \item{stream_id, een id die bij een Aggregate hoort, dit is een \gls{GUID}. Alle events die behoren tot een bepaalde aggregate zullen dezelfde stream_id hebben.}
   \item{stream_version, een versie die incrementeel is per aggregate. Dit zorgt ervoor dat events in de juiste volgorde kunnen worden afgespeeld indien nodig.}
   \item{event_name, de naam van het DomainEvent dat opgeslagen moet worden. Via deze naam kan het juiste object weer opgebouwd worden in de code.}

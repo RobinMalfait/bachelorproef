@@ -1,8 +1,8 @@
-class AppointmentsStartDateHasBeenChanged {
+class AppointmentsStartDateHasChanged {
   private AppointmentId appointmentId;
   private DateTime start;
 
-  public AppointmentsStartDateHasBeenChanged(
+  public AppointmentsStartDateHasChanged(
     AppointmentId appointmentId,
     DateTime start
   ) {

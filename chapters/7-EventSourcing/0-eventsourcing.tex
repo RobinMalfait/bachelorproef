@@ -5,11 +5,11 @@
 \chapter{EventSourcing}
 \label{ch:eventsourcing}
 
-EventSourcing is geen nieuwe uitvinding, maar het principe wordt al jaren gebruikt in andere sectoren zoals de bankindustrie, wetgeving, en patiënten fiches die opgeslagen zijn bij dokters. De Belgische wetgeving maakt gebruik van het principe van EventSourcing in die zin dat, bij het toevoegen of ongedaan maken van wetten, er een addendum wordt toegevoegd aan de basiswetgeving (\cite{belgischewetgeving}).
+EventSourcing is geen nieuwe uitvinding, maar het principe wordt gebruikt in andere sectoren zoals de bankindustrie, wetgeving, en patiënten fiches~\autocite{mann2003standards} die opgeslagen zijn bij dokters. Het is met de ideeën uit deze domeinen dat EventSourcing binnen de informatica ontstaan is (M. Verraes, persoonlijke mededeling, 25 mei 2017). De Belgische wetgeving maakt gebruik van het principe van EventSourcing in die zin dat, bij het toevoegen of ongedaan maken van wetten, er een addendum wordt toegevoegd aan de basiswetgeving (\cite{belgischewetgeving}). Dit is belangrijk zodat wanneer er een misdrijf op tijdstip $x$ wordt gepleegd en de wet op tijdstip $y$ pas verandert, er nog steeds geweten is hoe de wet er uitzag op tijdstip $x$ en er volgens de wet van tijdstip $x$ kan gestraft worden.
 
-EventSourcing betekent, zoals de naam al verklapt, dat events de bron zijn van de applicatie. Het is ook zo dat de events de \gls{ssot} zijn van de applicatie om andere state uit af te leiden. Een log bestaat ook uit een geschiedenis van events, maar deze wordt niet gebruikt als \gls{ssot} op de huidige state af te leiden.
+EventSourcing betekent dat events de bron zijn van de applicatie. Het is ook zo dat de events de \gls{ssot} zijn van de applicatie om andere \gls{state} uit af te leiden. Een log bestaat ook uit een geschiedenis van events, maar deze wordt niet gebruikt als \gls{ssot} om de huidige \gls{state} af te leiden.
 
-EventSourcing wordt door Microsoft aanzien als een patroon. Microsoft heeft onderzoek gedaan naar wanneer men dit patroon het best gebruikt en wanneer niet \autocite{Microsoft2017ES}.
+EventSourcing wordt door Microsoft aanzien als een \gls{pattern}\footnote{\glsdesc{pattern}}. Microsoft heeft onderzoek gedaan naar wanneer men dit \gls{pattern} het best gebruikt en wanneer niet \autocite{Microsoft2017ES}.
 
 Zoals eerder vermeld, is het principe van EventSourcing niet nieuw voor sectoren zoals de bankindustrie, daarom zijn er veel voorbeelden te vinden over bank transacties en e-commerce omtrent EventSourcing. Deze worden ook als voorbeeld gebruikt bij \textcite{Microsoft2017ES}. In deze bachelorproef wordt er naar Skedify gekeken, wat niet rechtstreeks te maken heeft met de standaard voorbeelden die te vinden zijn.
 

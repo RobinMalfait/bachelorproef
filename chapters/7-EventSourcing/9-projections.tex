@@ -13,4 +13,4 @@ Deze projecties zijn een berekening uit de voorbije events, dit wilt ook zeggen 
 
 Een projectie kan ook dienen als rapportering tool waarbij moeilijke businessvragen eenvoudiger beantwoord kunnen worden omdat al de voorbije events terug kunnen geraadpleegd worden.
 
-Om een wijziging te kunnen doorvoeren in een aggregate, moet eerst de huidige state opgebouwd worden vanuit de Domain Events. Dit kan echter inefficiënt zijn wanneer er duizenden events beschikbaar zijn. Een projectie kan dan perfect dienen als een \gls{cache}, om dit probleem op te lossen.
+Een projectie kan ook perfect dienen als een \gls{cache}. Wanneer men bij Skedify wilt weten hoeveel appointments er gemaakt zijn, dan kan er een projectie gemaakt worden met behulp van \gls{redis}\footnote{\glsdesc{redis}}, die incrementeel het aantal zal gaan verhogen. Vermits al de events bijgehouden worden, kunnen de projecties weggegooid worden en opnieuw opgebouwd worden.
