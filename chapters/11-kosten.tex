@@ -19,7 +19,7 @@ Met deze gegevens kan er berekend worden hoeveel disk capaciteit er nodig is om 
 \frac{143 500 \text{ \glspl{request}}}{\text{ maand}} \times 168 \text{ bytes} \times 5 \text{ jaar} = 1.37 \text{ GB} 
 \end{equation}
 
-Dit wilt zeggen dat er 1.37GB plaats moet voorzien worden als men de events wilt opslaan voor 5 jaar. In de volgende tabel zal er een assumptie gemaakt worden dat het aantal \glspl{request} doorheen de jaren zal stijgen en dat het aantal bytes voor een event ook zal stijgen.
+Dit wil zeggen dat er 1.37GB plaats moet voorzien worden als men de events wil opslaan voor 5 jaar. In de volgende tabel zal er een assumptie gemaakt worden dat het aantal \glspl{request} doorheen de jaren zal stijgen en dat het aantal bytes voor een event ook zal stijgen.
 
 \begin{table}[h]
 \centering
@@ -47,9 +47,10 @@ De laatste lijn van deze tabel is een uitschieter om te bewijzen dat zelfs na 50
 Zoals te zien in tabel \ref{disk-capaciteit} is het helemaal geen probleem om de events op te slaan omdat deze helemaal niet zo groot zijn. De kost is 1 harde schijf extra, die elk jaar goedkoper en goedkoper wordt. Meer nog, zolang de datahoeveelheid onder de wet van Kryder\footnote{De assumptie dat de schijfdichtheid, ook wel de oppervlaktedichtheid genoemd, elke dertien maanden zal verdubbelen. De implicatie van de wet van Kryder is dat als de oppervlaktedichtheid verbetert, de opslag goedkoper wordt \autocite{walter2005kryder}} blijft (zie figuur \ref{fig:krydersslowdown}), wordt het data opslagmechanisme alleen maar goedkoper over tijd.
 
 \begin{figure}[h]
-\caption{Kryder slowdown. Chart by Preeti Gupta at UCSC.} \label{fig:krydersslowdown}
-\centering
-\includegraphics[width=0.75\textwidth]{img/kryder-slowdown}
+  \caption{Kryder slowdown. Chart by Preeti Gupta at UCSC.} \label{fig:krydersslowdown}
+  \centering
+  \includegraphics[width=0.75\textwidth]{img/kryder-slowdown}
+  \figsource{\url{http://www.theregister.co.uk/Print/2014/11/10/kryders_law_of_ever_cheaper_storage_disproven/}}
 \end{figure}
 
 Een tweede kost waar er rekening mee moet worden gehouden zijn backups. Zoals vermeld in Hoofdstuk~\ref{sec:projections} zijn de databanken die gebruikt worden projecties van de afgebeelde events. Vermits deze een berekening zijn, volstaat het om enkel van de events een backup te nemen, omdat de projecties opnieuw berekend kunnen worden\footnote{Er mag niet vergeten worden om een backup te nemen van data die niet in de databank wordt opgeslagen, zoals afbeeldingen}.

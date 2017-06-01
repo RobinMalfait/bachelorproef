@@ -15,7 +15,7 @@ Value objects geven ook betekenis aan de code. In het volgende code voorbeeld is
 
 \codefragment{source/ValueObjects-BadExample.java}{Een minder goed voorbeeld van Value Objects}
 
-Wanneer er nu een AddAppointment object gemaakt wordt, is er wel nog steeds het gevaar de agent en de klant om te draaien. Als we geldige strings gebruiken, zal de code geen exceptie gooien en zit er een bug in het systeem.
+Wanneer er nu een AddAppointment object gemaakt wordt, bestaat er nog steeds het gevaar de agent en de klant om te draaien. Als we geldige strings gebruiken, zal de code geen exceptie gooien en zit er een bug in het systeem.
 
 Dit probleem kan opgelost worden door Value objects te gebruiken. Bij het verwisselen van de parameters zal er een exceptie gegooid worden omdat de types niet overeen komen.
 
